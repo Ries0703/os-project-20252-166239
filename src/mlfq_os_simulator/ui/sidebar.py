@@ -5,7 +5,7 @@ import streamlit as st
 from ..application.services import SimulationService
 from ..infrastructure.json_repository import JsonRepository
 from ..shared.config import AppConfig
-from ..shared.contracts import AlgorithmConfigField
+from .config_fields import render_config_fields
 
 
 def render_sidebar(
@@ -18,32 +18,12 @@ def render_sidebar(
 
     st.sidebar.header("Cấu hình Scheduler")
     st.sidebar.caption(f"{descriptor.display_name}: {descriptor.description}")
-
-    def render_field(field: AlgorithmConfigField) -> int:
-        current_value = current_config.get_int(field.key, field.default)
-        if field.widget == "slider":
-            return int(
-                st.sidebar.slider(
-                    field.label,
-                    min_value=field.min_value,
-                    max_value=field.max_value or max(field.default, field.min_value),
-                    value=current_value,
-                    help=field.description or None,
-                )
-            )
-        return int(
-            st.sidebar.number_input(
-                field.label,
-                min_value=field.min_value,
-                max_value=field.max_value,
-                value=current_value,
-                step=1,
-                help=field.description or None,
-            )
-        )
-
-    updates = {field.key: render_field(field) for field in descriptor.config_fields}
-    candidate = current_config.with_updates(updates)
+    candidate = render_config_fields(
+        st.sidebar,
+        current_config,
+        descriptor.config_fields,
+        "sidebar_config",
+    )
     if st.sidebar.button("Lưu cấu hình", key="save_config_button", width="stretch"):
         repository.save_config(candidate)
         st.session_state["config"] = candidate

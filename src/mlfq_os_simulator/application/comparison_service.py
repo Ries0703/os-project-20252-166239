@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from ..shared.config import AppConfig
+from ..shared.contracts import AlgorithmDescriptor
 from ..shared.process import ProcessInput
 from .comparison_models import ComparisonReport, ComparisonWorkload
 from .registry import SchedulerRegistry
@@ -10,21 +11,29 @@ class ComparisonService:
     def __init__(self, registry: SchedulerRegistry) -> None:
         self.registry = registry
 
+    def comparison_descriptors(self) -> list[AlgorithmDescriptor]:
+        return self.registry.comparison_descriptors()
+
     def compare(
         self,
         workload: ComparisonWorkload,
-        config: AppConfig,
+        config_map: AppConfig | dict[str, AppConfig],
         strategy_keys: list[str] | None = None,
     ) -> ComparisonReport:
         keys = strategy_keys or [
             descriptor.key for descriptor in self.registry.comparison_descriptors()
         ]
+        normalized_config_map = self._normalize_config_map(config_map, keys)
         results = [
-            self.registry.simulate(key, workload.processes, config).result
+            self.registry.simulate(
+                key,
+                workload.processes,
+                normalized_config_map.get(key, AppConfig()),
+            ).result
             for key in keys
         ]
 
-        discussion = self._build_discussion(workload, results, config)
+        discussion = self._build_discussion(workload, results, normalized_config_map)
 
         return ComparisonReport(
             workload_key=workload.key,
@@ -49,7 +58,7 @@ class ComparisonService:
         self,
         workload: ComparisonWorkload,
         results,
-        config: AppConfig,
+        config_map: dict[str, AppConfig],
     ) -> str:
         sorted_by_response = sorted(results, key=lambda item: item.avg_response)
         best_response = sorted_by_response[0]
@@ -64,8 +73,9 @@ class ComparisonService:
         )
         mlfq_factor_summary = "các quantum queue, boost interval và context switch time"
         if mlfq_descriptor is not None:
+            mlfq_config = config_map.get("mlfq", AppConfig())
             parts = [
-                f"{field.label}={config.get_int(field.key, field.default)}"
+                f"{field.label}={mlfq_config.get_int(field.key, field.default)}"
                 for field in mlfq_descriptor.config_fields
             ]
             mlfq_factor_summary = ", ".join(parts)
@@ -77,3 +87,12 @@ class ComparisonService:
             f"{mlfq_factor_summary} là các yếu tố chính "
             f"ảnh hưởng fairness và throughput."
         )
+
+    @staticmethod
+    def _normalize_config_map(
+        config_map: AppConfig | dict[str, AppConfig],
+        keys: list[str],
+    ) -> dict[str, AppConfig]:
+        if isinstance(config_map, AppConfig):
+            return {key: config_map for key in keys}
+        return config_map

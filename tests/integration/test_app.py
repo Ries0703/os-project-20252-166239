@@ -67,3 +67,26 @@ def test_app_comparison_tab_does_not_raise_duplicate_plotly_ids(
 
     assert len(at.exception) == 0
     assert len(at.dataframe) >= 1
+
+
+def test_app_comparison_can_edit_algorithm_specific_params(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    monkeypatch.setenv("MLFQ_DATA_DIR", str(tmp_path / "data"))
+    monkeypatch.setenv("MLFQ_ANIMATION_DELAY", "0")
+
+    at = AppTest.from_file("app.py")
+    at.run()
+
+    round_robin_quantum = next(
+        item
+        for item in at.number_input
+        if item.key == "comparison_config_round_robin_round_robin_quantum"
+    )
+    round_robin_quantum.set_value(2)
+    at.button[2].click()
+    at.run()
+
+    assert len(at.exception) == 0
+    assert len(at.dataframe) >= 1

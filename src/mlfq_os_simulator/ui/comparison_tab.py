@@ -6,7 +6,9 @@ import streamlit as st
 from ..application.comparison_models import ComparisonReport, ComparisonWorkload
 from ..application.workloads import curated_workloads
 from ..shared.config import AppConfig
+from ..shared.contracts import AlgorithmDescriptor
 from ..shared.metrics import build_algorithm_gantt_figure
+from .config_fields import render_config_fields
 from .simulator_tab import normalize_process_rows
 
 
@@ -15,6 +17,8 @@ def render_comparison_tab(
     config: AppConfig,
 ) -> None:
     st.subheader("Comparison")
+    config_map = _ensure_comparison_config_map(comparison_service, config)
+    _render_comparison_config_panel(comparison_service.comparison_descriptors(), config_map)
 
     workloads = curated_workloads()
     workload_map = {workload.key: workload for workload in workloads}
@@ -42,7 +46,7 @@ def render_comparison_tab(
                 return
             workload = comparison_service.workload_from_current_table(processes)
 
-        st.session_state["comparison_report"] = comparison_service.compare(workload, config)
+        st.session_state["comparison_report"] = comparison_service.compare(workload, config_map)
 
     report = st.session_state.get("comparison_report")
     if report is not None:
@@ -56,6 +60,52 @@ def _resolve_workload(
     if selected_key == "current_table":
         return None
     return workload_map[selected_key]
+
+
+def _ensure_comparison_config_map(
+    comparison_service,
+    seed_config: AppConfig,
+) -> dict[str, AppConfig]:
+    existing = st.session_state.get("comparison_config_map", {})
+    if not isinstance(existing, dict):
+        existing = {}
+
+    normalized: dict[str, AppConfig] = {}
+    for descriptor in comparison_service.comparison_descriptors():
+        stored = existing.get(descriptor.key)
+        if isinstance(stored, AppConfig):
+            normalized[descriptor.key] = stored
+            continue
+        if isinstance(stored, dict):
+            normalized[descriptor.key] = AppConfig.model_validate(stored)
+            continue
+        normalized[descriptor.key] = AppConfig.model_validate(seed_config.model_dump(mode="json"))
+
+    st.session_state["comparison_config_map"] = normalized
+    return normalized
+
+
+def _render_comparison_config_panel(
+    descriptors: list[AlgorithmDescriptor],
+    config_map: dict[str, AppConfig],
+) -> None:
+    st.caption(
+        "Comparison dùng config riêng cho từng thuật toán, độc lập với sidebar của Simulator."
+    )
+    for descriptor in descriptors:
+        with st.expander(
+            f"{descriptor.display_name} Parameters",
+            expanded=descriptor.is_default,
+        ):
+            st.caption(descriptor.description)
+            config_map[descriptor.key] = render_config_fields(
+                st,
+                config_map[descriptor.key],
+                descriptor.config_fields,
+                f"comparison_config_{descriptor.key}",
+            )
+
+    st.session_state["comparison_config_map"] = config_map
 
 
 def render_comparison_report(report: ComparisonReport) -> None:

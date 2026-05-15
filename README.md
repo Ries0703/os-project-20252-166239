@@ -98,6 +98,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\run-docker-image.ps1 -Port 85
 - Đã có ứng dụng Streamlit chạy end-to-end cho mô phỏng MLFQ
 - Đã có strategy base cho `MLFQ`, `FCFS`, và `Round Robin`
 - Đã có tab `Comparison` để so sánh nhiều thuật toán trên cùng workload
+- Tab `Comparison` có config riêng theo từng thuật toán, không phụ thuộc thuật toán đang chọn ở `Simulator`
 - Đã có unit test và integration test cho scheduler, registry, comparison service, helper UI, và flow app
 
 ## File quan trọng
@@ -230,4 +231,5 @@ Nếu bàn giao theo đường Docker:
 - `data/config.json` và `data/history.json` là runtime artifacts local, do app tự tạo lại nếu thiếu.
 - Không commit `data/config.json`, `data/history.json`, `*.lock`, hoặc `*.tmp` trong `data/`.
 - `Comparison` tab hiện so sánh `MLFQ`, `FCFS`, và `Round Robin`.
+- `Comparison` dùng config snapshot riêng cho từng thuật toán trong session state; không reuse sidebar config của `Simulator` một cách ngầm nữa.
 - Nếu PowerShell hiện warning từ `PSReadLine`, có thể bỏ qua nếu script vẫn kết thúc thành công.

@@ -12,6 +12,7 @@ Tài liệu này dành cho agent làm việc trong repo này. Mục tiêu là gi
 - Script Docker chính thức cho người dùng là `scripts/build-docker-image.ps1` và `scripts/run-docker-image.ps1`.
 - Kiến trúc phase hiện tại là strategy-first: `MLFQ`, `FCFS`, `Round Robin` đều phải conform cùng scheduler contract.
 - Tab `Simulator` phải algo-agnostic: chọn thuật toán qua dropdown và resolve qua service/registry, không nối tắt vào UI.
+- Tab `Comparison` phải có config riêng theo từng thuật toán; không phụ thuộc selected algorithm trong `Simulator`.
 - Blueprint nguồn sự thật duy nhất là `docs/superpowers/2026-05-15-scheduling-platform-blueprint.md`.
 
 ## 2. Tooling bắt buộc
