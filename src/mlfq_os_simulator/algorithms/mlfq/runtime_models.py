@@ -5,15 +5,8 @@ from datetime import datetime
 
 from pydantic import BaseModel, ConfigDict, Field
 
-from .config import SCHEMA_VERSION, AppConfig
-
-
-class ProcessInput(BaseModel):
-    model_config = ConfigDict(extra="forbid")
-
-    pid: str = Field(min_length=1)
-    arrival_time: int = Field(ge=0)
-    burst_time: int = Field(gt=0)
+from ...shared.config import SCHEMA_VERSION, AppConfig
+from ...shared.process import ProcessInput
 
 
 class ProcessState(ProcessInput):

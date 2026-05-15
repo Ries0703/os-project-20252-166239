@@ -4,29 +4,38 @@ import json
 from datetime import UTC, datetime
 from pathlib import Path
 
-from mlfq_os_simulator.config import AppConfig
-from mlfq_os_simulator.models import ProcessState, SimulationRun
-from mlfq_os_simulator.repository import JsonRepository
+from mlfq_os_simulator.infrastructure.json_repository import JsonRepository
+from mlfq_os_simulator.shared.config import AppConfig
+from mlfq_os_simulator.shared.process import ProcessInput
+from mlfq_os_simulator.shared.results import (
+    AlgorithmGanttEntry,
+    AlgorithmProcessResult,
+    AlgorithmRunResult,
+)
 
 
-def _build_run(run_id: str = "run-1") -> SimulationRun:
-    process = ProcessState(
+def _build_run(run_id: str = "run-1") -> AlgorithmRunResult:
+    process = AlgorithmProcessResult(
         pid="P1",
         arrival_time=0,
         burst_time=1,
-        input_order=0,
-        remaining_time=0,
-        current_queue=0,
-        quantum_used=0,
         start_time=0,
         completion_time=1,
+        turnaround_time=1,
+        waiting_time=0,
+        response_time=0,
     )
-    return SimulationRun(
+    return AlgorithmRunResult(
         run_id=run_id,
+        algorithm_key="mlfq",
+        algorithm_display_name="MLFQ",
         timestamp=datetime.now(UTC),
         config_used=AppConfig(),
-        processes=[process],
-        gantt_log=[],
+        process_count=1,
+        process_inputs=[ProcessInput(pid="P1", arrival_time=0, burst_time=1)],
+        process_results=[process],
+        gantt_entries=[AlgorithmGanttEntry(Task="P1", Start=0, Finish=1, Lane="Q0")],
+        makespan=1,
         throughput=1.0,
         avg_turnaround=1.0,
         avg_waiting=0.0,
@@ -53,6 +62,7 @@ def test_history_is_pruned_to_twenty_entries(temp_data_dir: Path) -> None:
 
     assert len(runs) == 20
     assert runs[0].run_id == "run-5"
+    assert runs[0].algorithm_key == "mlfq"
     assert runs[-1].run_id == "run-24"
 
 

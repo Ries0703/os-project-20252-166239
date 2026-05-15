@@ -8,8 +8,8 @@ from typing import Any
 from filelock import FileLock
 from pydantic import TypeAdapter, ValidationError
 
-from .config import AppConfig, default_config
-from .models import SimulationRun
+from ..shared.config import AppConfig, default_config
+from ..shared.results import AlgorithmRunResult
 
 
 class JsonRepository:
@@ -41,18 +41,17 @@ class JsonRepository:
     def save_config(self, config: AppConfig) -> None:
         self._write_json(self.config_path, config.model_dump(mode="json"))
 
-    def get_all_runs(self) -> list[SimulationRun]:
+    def get_all_runs(self) -> list[AlgorithmRunResult]:
         if not self.history_path.exists():
             self._write_json(self.history_path, [])
             return []
 
-        adapter = TypeAdapter(list[SimulationRun])
+        adapter = TypeAdapter(list[AlgorithmRunResult])
         recovered = False
         with self._lock_for(self.history_path):
             try:
                 data = json.loads(self.history_path.read_text(encoding="utf-8"))
-                runs = adapter.validate_python(data)
-                return runs
+                return adapter.validate_python(data)
             except (OSError, json.JSONDecodeError, ValidationError):
                 recovered = True
 
@@ -61,11 +60,11 @@ class JsonRepository:
             self._write_json(self.history_path, [])
         return []
 
-    def save_run(self, run: SimulationRun) -> None:
+    def save_run(self, run: AlgorithmRunResult) -> None:
         runs = self.get_all_runs()
         runs.append(run)
-        serialized = [item.model_dump(mode="json") for item in runs[-20:]]
-        self._write_json(self.history_path, serialized)
+        payload = [item.model_dump(mode="json") for item in runs[-20:]]
+        self._write_json(self.history_path, payload)
 
     def consume_warnings(self) -> list[str]:
         warnings = self._warnings[:]

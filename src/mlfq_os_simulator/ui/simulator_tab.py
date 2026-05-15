@@ -5,10 +5,11 @@ from collections.abc import Sequence
 import pandas as pd
 import streamlit as st
 
-from ..config import AppConfig
-from ..models import ProcessInput, SimulationOutcome
-from ..repository import JsonRepository
-from ..scheduler import MLFQScheduler
+from ..infrastructure.json_repository import JsonRepository
+from ..shared.config import AppConfig
+from ..shared.process import ProcessInput
+
+DEFAULT_SIMULATOR_ALGORITHM = "mlfq"
 
 
 def build_demo_process_rows() -> list[dict[str, int | str]]:
@@ -81,8 +82,33 @@ def normalize_process_rows(
     return normalized, errors
 
 
-def render_simulator_tab(config: AppConfig, repository: JsonRepository) -> SimulationOutcome | None:
+def render_simulator_tab(
+    config: AppConfig,
+    repository: JsonRepository,
+    simulation_service,
+) -> object | None:
     st.subheader("Nhập dữ liệu process")
+
+    algorithm_descriptors = simulation_service.available_algorithms()
+    algorithm_options = {
+        descriptor.key: descriptor for descriptor in algorithm_descriptors
+    }
+    if "selected_algorithm" not in st.session_state:
+        st.session_state["selected_algorithm"] = DEFAULT_SIMULATOR_ALGORITHM
+    if st.session_state["selected_algorithm"] not in algorithm_options:
+        st.session_state["selected_algorithm"] = DEFAULT_SIMULATOR_ALGORITHM
+
+    selected_algorithm = st.selectbox(
+        "Algorithm",
+        options=list(algorithm_options.keys()),
+        index=list(algorithm_options.keys()).index(st.session_state["selected_algorithm"]),
+        format_func=lambda key: algorithm_options[key].display_name,
+        key="selected_algorithm",
+    )
+    selected_descriptor = algorithm_options[selected_algorithm]
+    st.caption(
+        f"Đang mô phỏng: {selected_descriptor.display_name} — {selected_descriptor.description}"
+    )
 
     if "process_rows" not in st.session_state:
         st.session_state["process_rows"] = build_demo_process_rows()
@@ -113,11 +139,16 @@ def render_simulator_tab(config: AppConfig, repository: JsonRepository) -> Simul
     st.session_state["process_rows"] = edited_df.to_dict("records")
 
     generated_col, run_col = st.columns(2)
-    if generated_col.button("Auto Generate Data", width="stretch"):
+    if generated_col.button("Auto Generate Data", key="generate_demo_button", width="stretch"):
         st.session_state["process_rows"] = build_demo_process_rows()
         st.rerun()
 
-    if run_col.button("Run MLFQ Simulation", type="primary", width="stretch"):
+    if run_col.button(
+        f"Run {selected_descriptor.display_name} Simulation",
+        type="primary",
+        key="run_simulation_button",
+        width="stretch",
+    ):
         process_rows = edited_df.to_dict("records")
         processes, errors = normalize_process_rows(process_rows)
         if errors:
@@ -125,9 +156,8 @@ def render_simulator_tab(config: AppConfig, repository: JsonRepository) -> Simul
                 st.error(error)
             return None
 
-        scheduler = MLFQScheduler(config)
-        outcome = scheduler.simulate(processes)
-        repository.save_run(outcome.run)
+        outcome = simulation_service.run_algorithm(selected_algorithm, processes, config)
+        repository.save_run(outcome.result)
         return outcome
 
     return None

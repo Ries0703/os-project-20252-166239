@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import pandas as pd
 
-from mlfq_os_simulator.metrics import build_gantt_figure, gantt_to_dataframe
-from mlfq_os_simulator.models import GanttLogEntry
+from mlfq_os_simulator.shared.metrics import build_gantt_figure, gantt_to_dataframe
+from mlfq_os_simulator.shared.results import AlgorithmGanttEntry
 from mlfq_os_simulator.ui.simulator_tab import build_demo_process_rows, normalize_process_rows
 
 
@@ -42,13 +42,13 @@ def test_normalize_process_rows_rejects_empty_table() -> None:
 def test_gantt_to_dataframe_builds_expected_columns() -> None:
     dataframe = gantt_to_dataframe(
         [
-            GanttLogEntry(Task="P1", Start=0, Finish=2, Queue="Q0"),
-            GanttLogEntry(Task="Idle", Start=2, Finish=3, Queue="N/A"),
+            AlgorithmGanttEntry(Task="P1", Start=0, Finish=2, Lane="Q0"),
+            AlgorithmGanttEntry(Task="Idle", Start=2, Finish=3, Lane="N/A"),
         ]
     )
 
     assert isinstance(dataframe, pd.DataFrame)
-    assert list(dataframe.columns) == ["Task", "Start", "Finish", "Queue"]
+    assert list(dataframe.columns) == ["Task", "Start", "Finish", "Lane"]
     assert dataframe.iloc[0]["Task"] == "P1"
 
 
@@ -63,8 +63,8 @@ def test_build_demo_process_rows_returns_reasonable_demo_data() -> None:
 def test_build_gantt_figure_uses_numeric_time_axis() -> None:
     figure = build_gantt_figure(
         [
-            GanttLogEntry(Task="P1", Start=0, Finish=4, Queue="Q0"),
-            GanttLogEntry(Task="P2", Start=4, Finish=6, Queue="Q1"),
+            AlgorithmGanttEntry(Task="P1", Start=0, Finish=4, Lane="Q0"),
+            AlgorithmGanttEntry(Task="P2", Start=4, Finish=6, Lane="Q1"),
         ]
     )
 

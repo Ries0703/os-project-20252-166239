@@ -1,2344 +1,3488 @@
 [
   {
-    "schema_version": 1,
-    "run_id": "d1eba519639e4504be2675d0da286a55",
-    "timestamp": "2026-05-15T05:28:30.162253Z",
+    "run_id": "0fa927d59cda4918abeb3026b6b5a93b",
+    "algorithm_key": "mlfq",
+    "algorithm_display_name": "MLFQ",
+    "timestamp": "2026-05-15T07:55:03.929974Z",
     "config_used": {
       "schema_version": 1,
       "quantum_q0": 4,
       "quantum_q1": 8,
-      "quantum_q2": 16,
-      "aging_boost_interval": 50,
-      "context_switch_time": 1
-    },
-    "processes": [
-      {
-        "pid": "P1",
-        "arrival_time": 0,
-        "burst_time": 9,
-        "input_order": 0,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 5,
-        "start_time": 0,
-        "completion_time": 29
-      },
-      {
-        "pid": "P2",
-        "arrival_time": 1,
-        "burst_time": 4,
-        "input_order": 1,
-        "remaining_time": 0,
-        "current_queue": 0,
-        "quantum_used": 4,
-        "start_time": 5,
-        "completion_time": 9
-      },
-      {
-        "pid": "P3",
-        "arrival_time": 2,
-        "burst_time": 7,
-        "input_order": 2,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 3,
-        "start_time": 10,
-        "completion_time": 33
-      },
-      {
-        "pid": "P4",
-        "arrival_time": 4,
-        "burst_time": 3,
-        "input_order": 3,
-        "remaining_time": 0,
-        "current_queue": 0,
-        "quantum_used": 3,
-        "start_time": 15,
-        "completion_time": 18
-      },
-      {
-        "pid": "P5",
-        "arrival_time": 6,
-        "burst_time": 5,
-        "input_order": 4,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 1,
-        "start_time": 19,
-        "completion_time": 35
-      }
-    ],
-    "gantt_log": [
-      {
-        "Task": "P1",
-        "Start": 0,
-        "Finish": 4,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 4,
-        "Finish": 5,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P2",
-        "Start": 5,
-        "Finish": 9,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 9,
-        "Finish": 10,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P3",
-        "Start": 10,
-        "Finish": 14,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 14,
-        "Finish": 15,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P4",
-        "Start": 15,
-        "Finish": 18,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 18,
-        "Finish": 19,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P5",
-        "Start": 19,
-        "Finish": 23,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 23,
-        "Finish": 24,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P1",
-        "Start": 24,
-        "Finish": 29,
-        "Queue": "Q1"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 29,
-        "Finish": 30,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P3",
-        "Start": 30,
-        "Finish": 33,
-        "Queue": "Q1"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 33,
-        "Finish": 34,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P5",
-        "Start": 34,
-        "Finish": 35,
-        "Queue": "Q1"
-      }
-    ],
-    "throughput": 0.14285714285714285,
-    "avg_turnaround": 22.2,
-    "avg_waiting": 16.6,
-    "avg_response": 7.2
-  },
-  {
-    "schema_version": 1,
-    "run_id": "512568fa6bf2405daa77cce66c19a51f",
-    "timestamp": "2026-05-15T05:30:42.171015Z",
-    "config_used": {
-      "schema_version": 1,
-      "quantum_q0": 4,
-      "quantum_q1": 8,
-      "quantum_q2": 16,
-      "aging_boost_interval": 50,
-      "context_switch_time": 1
-    },
-    "processes": [
-      {
-        "pid": "P1",
-        "arrival_time": 0,
-        "burst_time": 9,
-        "input_order": 0,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 5,
-        "start_time": 0,
-        "completion_time": 29
-      },
-      {
-        "pid": "P2",
-        "arrival_time": 1,
-        "burst_time": 4,
-        "input_order": 1,
-        "remaining_time": 0,
-        "current_queue": 0,
-        "quantum_used": 4,
-        "start_time": 5,
-        "completion_time": 9
-      },
-      {
-        "pid": "P3",
-        "arrival_time": 2,
-        "burst_time": 7,
-        "input_order": 2,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 3,
-        "start_time": 10,
-        "completion_time": 33
-      },
-      {
-        "pid": "P4",
-        "arrival_time": 4,
-        "burst_time": 3,
-        "input_order": 3,
-        "remaining_time": 0,
-        "current_queue": 0,
-        "quantum_used": 3,
-        "start_time": 15,
-        "completion_time": 18
-      },
-      {
-        "pid": "P5",
-        "arrival_time": 6,
-        "burst_time": 5,
-        "input_order": 4,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 1,
-        "start_time": 19,
-        "completion_time": 35
-      }
-    ],
-    "gantt_log": [
-      {
-        "Task": "P1",
-        "Start": 0,
-        "Finish": 4,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 4,
-        "Finish": 5,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P2",
-        "Start": 5,
-        "Finish": 9,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 9,
-        "Finish": 10,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P3",
-        "Start": 10,
-        "Finish": 14,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 14,
-        "Finish": 15,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P4",
-        "Start": 15,
-        "Finish": 18,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 18,
-        "Finish": 19,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P5",
-        "Start": 19,
-        "Finish": 23,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 23,
-        "Finish": 24,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P1",
-        "Start": 24,
-        "Finish": 29,
-        "Queue": "Q1"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 29,
-        "Finish": 30,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P3",
-        "Start": 30,
-        "Finish": 33,
-        "Queue": "Q1"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 33,
-        "Finish": 34,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P5",
-        "Start": 34,
-        "Finish": 35,
-        "Queue": "Q1"
-      }
-    ],
-    "throughput": 0.14285714285714285,
-    "avg_turnaround": 22.2,
-    "avg_waiting": 16.6,
-    "avg_response": 7.2
-  },
-  {
-    "schema_version": 1,
-    "run_id": "9d5aa4906d01443aaa2c830431c0d337",
-    "timestamp": "2026-05-15T05:33:29.131411Z",
-    "config_used": {
-      "schema_version": 1,
-      "quantum_q0": 4,
-      "quantum_q1": 8,
-      "quantum_q2": 16,
-      "aging_boost_interval": 50,
-      "context_switch_time": 1
-    },
-    "processes": [
-      {
-        "pid": "P1",
-        "arrival_time": 0,
-        "burst_time": 9,
-        "input_order": 0,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 5,
-        "start_time": 0,
-        "completion_time": 29
-      },
-      {
-        "pid": "P2",
-        "arrival_time": 1,
-        "burst_time": 4,
-        "input_order": 1,
-        "remaining_time": 0,
-        "current_queue": 0,
-        "quantum_used": 4,
-        "start_time": 5,
-        "completion_time": 9
-      },
-      {
-        "pid": "P3",
-        "arrival_time": 2,
-        "burst_time": 7,
-        "input_order": 2,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 3,
-        "start_time": 10,
-        "completion_time": 33
-      },
-      {
-        "pid": "P4",
-        "arrival_time": 4,
-        "burst_time": 3,
-        "input_order": 3,
-        "remaining_time": 0,
-        "current_queue": 0,
-        "quantum_used": 3,
-        "start_time": 15,
-        "completion_time": 18
-      },
-      {
-        "pid": "P5",
-        "arrival_time": 6,
-        "burst_time": 5,
-        "input_order": 4,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 1,
-        "start_time": 19,
-        "completion_time": 35
-      }
-    ],
-    "gantt_log": [
-      {
-        "Task": "P1",
-        "Start": 0,
-        "Finish": 4,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 4,
-        "Finish": 5,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P2",
-        "Start": 5,
-        "Finish": 9,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 9,
-        "Finish": 10,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P3",
-        "Start": 10,
-        "Finish": 14,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 14,
-        "Finish": 15,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P4",
-        "Start": 15,
-        "Finish": 18,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 18,
-        "Finish": 19,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P5",
-        "Start": 19,
-        "Finish": 23,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 23,
-        "Finish": 24,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P1",
-        "Start": 24,
-        "Finish": 29,
-        "Queue": "Q1"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 29,
-        "Finish": 30,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P3",
-        "Start": 30,
-        "Finish": 33,
-        "Queue": "Q1"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 33,
-        "Finish": 34,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P5",
-        "Start": 34,
-        "Finish": 35,
-        "Queue": "Q1"
-      }
-    ],
-    "throughput": 0.14285714285714285,
-    "avg_turnaround": 22.2,
-    "avg_waiting": 16.6,
-    "avg_response": 7.2
-  },
-  {
-    "schema_version": 1,
-    "run_id": "f3204cebb3604e0c9632e2d9b210434f",
-    "timestamp": "2026-05-15T05:35:35.439382Z",
-    "config_used": {
-      "schema_version": 1,
-      "quantum_q0": 4,
-      "quantum_q1": 8,
-      "quantum_q2": 16,
-      "aging_boost_interval": 50,
-      "context_switch_time": 1
-    },
-    "processes": [
-      {
-        "pid": "P1",
-        "arrival_time": 0,
-        "burst_time": 9,
-        "input_order": 0,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 5,
-        "start_time": 0,
-        "completion_time": 29
-      },
-      {
-        "pid": "P2",
-        "arrival_time": 1,
-        "burst_time": 4,
-        "input_order": 1,
-        "remaining_time": 0,
-        "current_queue": 0,
-        "quantum_used": 4,
-        "start_time": 5,
-        "completion_time": 9
-      },
-      {
-        "pid": "P3",
-        "arrival_time": 2,
-        "burst_time": 7,
-        "input_order": 2,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 3,
-        "start_time": 10,
-        "completion_time": 33
-      },
-      {
-        "pid": "P4",
-        "arrival_time": 4,
-        "burst_time": 3,
-        "input_order": 3,
-        "remaining_time": 0,
-        "current_queue": 0,
-        "quantum_used": 3,
-        "start_time": 15,
-        "completion_time": 18
-      },
-      {
-        "pid": "P5",
-        "arrival_time": 6,
-        "burst_time": 5,
-        "input_order": 4,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 1,
-        "start_time": 19,
-        "completion_time": 35
-      }
-    ],
-    "gantt_log": [
-      {
-        "Task": "P1",
-        "Start": 0,
-        "Finish": 4,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 4,
-        "Finish": 5,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P2",
-        "Start": 5,
-        "Finish": 9,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 9,
-        "Finish": 10,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P3",
-        "Start": 10,
-        "Finish": 14,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 14,
-        "Finish": 15,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P4",
-        "Start": 15,
-        "Finish": 18,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 18,
-        "Finish": 19,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P5",
-        "Start": 19,
-        "Finish": 23,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 23,
-        "Finish": 24,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P1",
-        "Start": 24,
-        "Finish": 29,
-        "Queue": "Q1"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 29,
-        "Finish": 30,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P3",
-        "Start": 30,
-        "Finish": 33,
-        "Queue": "Q1"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 33,
-        "Finish": 34,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P5",
-        "Start": 34,
-        "Finish": 35,
-        "Queue": "Q1"
-      }
-    ],
-    "throughput": 0.14285714285714285,
-    "avg_turnaround": 22.2,
-    "avg_waiting": 16.6,
-    "avg_response": 7.2
-  },
-  {
-    "schema_version": 1,
-    "run_id": "1b7c61ff02b24c74ba2f9e3d37e1ccc4",
-    "timestamp": "2026-05-15T05:39:09.068447Z",
-    "config_used": {
-      "schema_version": 1,
-      "quantum_q0": 4,
-      "quantum_q1": 8,
-      "quantum_q2": 16,
-      "aging_boost_interval": 50,
-      "context_switch_time": 1
-    },
-    "processes": [
-      {
-        "pid": "P1",
-        "arrival_time": 0,
-        "burst_time": 9,
-        "input_order": 0,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 5,
-        "start_time": 0,
-        "completion_time": 29
-      },
-      {
-        "pid": "P2",
-        "arrival_time": 1,
-        "burst_time": 4,
-        "input_order": 1,
-        "remaining_time": 0,
-        "current_queue": 0,
-        "quantum_used": 4,
-        "start_time": 5,
-        "completion_time": 9
-      },
-      {
-        "pid": "P3",
-        "arrival_time": 2,
-        "burst_time": 7,
-        "input_order": 2,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 3,
-        "start_time": 10,
-        "completion_time": 33
-      },
-      {
-        "pid": "P4",
-        "arrival_time": 4,
-        "burst_time": 3,
-        "input_order": 3,
-        "remaining_time": 0,
-        "current_queue": 0,
-        "quantum_used": 3,
-        "start_time": 15,
-        "completion_time": 18
-      },
-      {
-        "pid": "P5",
-        "arrival_time": 6,
-        "burst_time": 5,
-        "input_order": 4,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 1,
-        "start_time": 19,
-        "completion_time": 35
-      }
-    ],
-    "gantt_log": [
-      {
-        "Task": "P1",
-        "Start": 0,
-        "Finish": 4,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 4,
-        "Finish": 5,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P2",
-        "Start": 5,
-        "Finish": 9,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 9,
-        "Finish": 10,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P3",
-        "Start": 10,
-        "Finish": 14,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 14,
-        "Finish": 15,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P4",
-        "Start": 15,
-        "Finish": 18,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 18,
-        "Finish": 19,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P5",
-        "Start": 19,
-        "Finish": 23,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 23,
-        "Finish": 24,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P1",
-        "Start": 24,
-        "Finish": 29,
-        "Queue": "Q1"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 29,
-        "Finish": 30,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P3",
-        "Start": 30,
-        "Finish": 33,
-        "Queue": "Q1"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 33,
-        "Finish": 34,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P5",
-        "Start": 34,
-        "Finish": 35,
-        "Queue": "Q1"
-      }
-    ],
-    "throughput": 0.14285714285714285,
-    "avg_turnaround": 22.2,
-    "avg_waiting": 16.6,
-    "avg_response": 7.2
-  },
-  {
-    "schema_version": 1,
-    "run_id": "89ad09f7f9724a4fa8b1e4463357b06e",
-    "timestamp": "2026-05-15T05:40:32.817904Z",
-    "config_used": {
-      "schema_version": 1,
-      "quantum_q0": 4,
-      "quantum_q1": 8,
-      "quantum_q2": 16,
-      "aging_boost_interval": 50,
-      "context_switch_time": 1
-    },
-    "processes": [
-      {
-        "pid": "P1",
-        "arrival_time": 0,
-        "burst_time": 9,
-        "input_order": 0,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 5,
-        "start_time": 0,
-        "completion_time": 29
-      },
-      {
-        "pid": "P2",
-        "arrival_time": 1,
-        "burst_time": 4,
-        "input_order": 1,
-        "remaining_time": 0,
-        "current_queue": 0,
-        "quantum_used": 4,
-        "start_time": 5,
-        "completion_time": 9
-      },
-      {
-        "pid": "P3",
-        "arrival_time": 2,
-        "burst_time": 7,
-        "input_order": 2,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 3,
-        "start_time": 10,
-        "completion_time": 33
-      },
-      {
-        "pid": "P4",
-        "arrival_time": 4,
-        "burst_time": 3,
-        "input_order": 3,
-        "remaining_time": 0,
-        "current_queue": 0,
-        "quantum_used": 3,
-        "start_time": 15,
-        "completion_time": 18
-      },
-      {
-        "pid": "P5",
-        "arrival_time": 6,
-        "burst_time": 5,
-        "input_order": 4,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 1,
-        "start_time": 19,
-        "completion_time": 35
-      }
-    ],
-    "gantt_log": [
-      {
-        "Task": "P1",
-        "Start": 0,
-        "Finish": 4,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 4,
-        "Finish": 5,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P2",
-        "Start": 5,
-        "Finish": 9,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 9,
-        "Finish": 10,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P3",
-        "Start": 10,
-        "Finish": 14,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 14,
-        "Finish": 15,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P4",
-        "Start": 15,
-        "Finish": 18,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 18,
-        "Finish": 19,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P5",
-        "Start": 19,
-        "Finish": 23,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 23,
-        "Finish": 24,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P1",
-        "Start": 24,
-        "Finish": 29,
-        "Queue": "Q1"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 29,
-        "Finish": 30,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P3",
-        "Start": 30,
-        "Finish": 33,
-        "Queue": "Q1"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 33,
-        "Finish": 34,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P5",
-        "Start": 34,
-        "Finish": 35,
-        "Queue": "Q1"
-      }
-    ],
-    "throughput": 0.14285714285714285,
-    "avg_turnaround": 22.2,
-    "avg_waiting": 16.6,
-    "avg_response": 7.2
-  },
-  {
-    "schema_version": 1,
-    "run_id": "0d9d8ecccb0046e0906836741e3ea4cf",
-    "timestamp": "2026-05-15T05:44:11.961457Z",
-    "config_used": {
-      "schema_version": 1,
-      "quantum_q0": 4,
-      "quantum_q1": 8,
-      "quantum_q2": 16,
-      "aging_boost_interval": 50,
-      "context_switch_time": 1
-    },
-    "processes": [
-      {
-        "pid": "P1",
-        "arrival_time": 0,
-        "burst_time": 9,
-        "input_order": 0,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 5,
-        "start_time": 0,
-        "completion_time": 29
-      },
-      {
-        "pid": "P2",
-        "arrival_time": 1,
-        "burst_time": 4,
-        "input_order": 1,
-        "remaining_time": 0,
-        "current_queue": 0,
-        "quantum_used": 4,
-        "start_time": 5,
-        "completion_time": 9
-      },
-      {
-        "pid": "P3",
-        "arrival_time": 2,
-        "burst_time": 7,
-        "input_order": 2,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 3,
-        "start_time": 10,
-        "completion_time": 33
-      },
-      {
-        "pid": "P4",
-        "arrival_time": 4,
-        "burst_time": 3,
-        "input_order": 3,
-        "remaining_time": 0,
-        "current_queue": 0,
-        "quantum_used": 3,
-        "start_time": 15,
-        "completion_time": 18
-      },
-      {
-        "pid": "P5",
-        "arrival_time": 6,
-        "burst_time": 5,
-        "input_order": 4,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 1,
-        "start_time": 19,
-        "completion_time": 35
-      }
-    ],
-    "gantt_log": [
-      {
-        "Task": "P1",
-        "Start": 0,
-        "Finish": 4,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 4,
-        "Finish": 5,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P2",
-        "Start": 5,
-        "Finish": 9,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 9,
-        "Finish": 10,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P3",
-        "Start": 10,
-        "Finish": 14,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 14,
-        "Finish": 15,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P4",
-        "Start": 15,
-        "Finish": 18,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 18,
-        "Finish": 19,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P5",
-        "Start": 19,
-        "Finish": 23,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 23,
-        "Finish": 24,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P1",
-        "Start": 24,
-        "Finish": 29,
-        "Queue": "Q1"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 29,
-        "Finish": 30,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P3",
-        "Start": 30,
-        "Finish": 33,
-        "Queue": "Q1"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 33,
-        "Finish": 34,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P5",
-        "Start": 34,
-        "Finish": 35,
-        "Queue": "Q1"
-      }
-    ],
-    "throughput": 0.14285714285714285,
-    "avg_turnaround": 22.2,
-    "avg_waiting": 16.6,
-    "avg_response": 7.2
-  },
-  {
-    "schema_version": 1,
-    "run_id": "4bc776248fb24883a0f5bc94c43ecb6d",
-    "timestamp": "2026-05-15T05:45:17.446919Z",
-    "config_used": {
-      "schema_version": 1,
-      "quantum_q0": 4,
-      "quantum_q1": 8,
-      "quantum_q2": 16,
-      "aging_boost_interval": 50,
-      "context_switch_time": 1
-    },
-    "processes": [
-      {
-        "pid": "P1",
-        "arrival_time": 0,
-        "burst_time": 9,
-        "input_order": 0,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 5,
-        "start_time": 0,
-        "completion_time": 29
-      },
-      {
-        "pid": "P2",
-        "arrival_time": 1,
-        "burst_time": 4,
-        "input_order": 1,
-        "remaining_time": 0,
-        "current_queue": 0,
-        "quantum_used": 4,
-        "start_time": 5,
-        "completion_time": 9
-      },
-      {
-        "pid": "P3",
-        "arrival_time": 2,
-        "burst_time": 7,
-        "input_order": 2,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 3,
-        "start_time": 10,
-        "completion_time": 33
-      },
-      {
-        "pid": "P4",
-        "arrival_time": 4,
-        "burst_time": 3,
-        "input_order": 3,
-        "remaining_time": 0,
-        "current_queue": 0,
-        "quantum_used": 3,
-        "start_time": 15,
-        "completion_time": 18
-      },
-      {
-        "pid": "P5",
-        "arrival_time": 6,
-        "burst_time": 5,
-        "input_order": 4,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 1,
-        "start_time": 19,
-        "completion_time": 35
-      }
-    ],
-    "gantt_log": [
-      {
-        "Task": "P1",
-        "Start": 0,
-        "Finish": 4,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 4,
-        "Finish": 5,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P2",
-        "Start": 5,
-        "Finish": 9,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 9,
-        "Finish": 10,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P3",
-        "Start": 10,
-        "Finish": 14,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 14,
-        "Finish": 15,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P4",
-        "Start": 15,
-        "Finish": 18,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 18,
-        "Finish": 19,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P5",
-        "Start": 19,
-        "Finish": 23,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 23,
-        "Finish": 24,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P1",
-        "Start": 24,
-        "Finish": 29,
-        "Queue": "Q1"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 29,
-        "Finish": 30,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P3",
-        "Start": 30,
-        "Finish": 33,
-        "Queue": "Q1"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 33,
-        "Finish": 34,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P5",
-        "Start": 34,
-        "Finish": 35,
-        "Queue": "Q1"
-      }
-    ],
-    "throughput": 0.14285714285714285,
-    "avg_turnaround": 22.2,
-    "avg_waiting": 16.6,
-    "avg_response": 7.2
-  },
-  {
-    "schema_version": 1,
-    "run_id": "6aff5808e7d842e594ca9a4a5ea658ca",
-    "timestamp": "2026-05-15T05:45:29.288953Z",
-    "config_used": {
-      "schema_version": 1,
-      "quantum_q0": 4,
-      "quantum_q1": 8,
-      "quantum_q2": 16,
-      "aging_boost_interval": 50,
-      "context_switch_time": 1
-    },
-    "processes": [
-      {
-        "pid": "P1",
-        "arrival_time": 0,
-        "burst_time": 9,
-        "input_order": 0,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 5,
-        "start_time": 0,
-        "completion_time": 29
-      },
-      {
-        "pid": "P2",
-        "arrival_time": 1,
-        "burst_time": 4,
-        "input_order": 1,
-        "remaining_time": 0,
-        "current_queue": 0,
-        "quantum_used": 4,
-        "start_time": 5,
-        "completion_time": 9
-      },
-      {
-        "pid": "P3",
-        "arrival_time": 2,
-        "burst_time": 7,
-        "input_order": 2,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 3,
-        "start_time": 10,
-        "completion_time": 33
-      },
-      {
-        "pid": "P4",
-        "arrival_time": 4,
-        "burst_time": 3,
-        "input_order": 3,
-        "remaining_time": 0,
-        "current_queue": 0,
-        "quantum_used": 3,
-        "start_time": 15,
-        "completion_time": 18
-      },
-      {
-        "pid": "P5",
-        "arrival_time": 6,
-        "burst_time": 5,
-        "input_order": 4,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 1,
-        "start_time": 19,
-        "completion_time": 35
-      }
-    ],
-    "gantt_log": [
-      {
-        "Task": "P1",
-        "Start": 0,
-        "Finish": 4,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 4,
-        "Finish": 5,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P2",
-        "Start": 5,
-        "Finish": 9,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 9,
-        "Finish": 10,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P3",
-        "Start": 10,
-        "Finish": 14,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 14,
-        "Finish": 15,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P4",
-        "Start": 15,
-        "Finish": 18,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 18,
-        "Finish": 19,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P5",
-        "Start": 19,
-        "Finish": 23,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 23,
-        "Finish": 24,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P1",
-        "Start": 24,
-        "Finish": 29,
-        "Queue": "Q1"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 29,
-        "Finish": 30,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P3",
-        "Start": 30,
-        "Finish": 33,
-        "Queue": "Q1"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 33,
-        "Finish": 34,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P5",
-        "Start": 34,
-        "Finish": 35,
-        "Queue": "Q1"
-      }
-    ],
-    "throughput": 0.14285714285714285,
-    "avg_turnaround": 22.2,
-    "avg_waiting": 16.6,
-    "avg_response": 7.2
-  },
-  {
-    "schema_version": 1,
-    "run_id": "088119cda42e48ca9a2b8e4784a91037",
-    "timestamp": "2026-05-15T05:45:40.993370Z",
-    "config_used": {
-      "schema_version": 1,
-      "quantum_q0": 4,
-      "quantum_q1": 8,
-      "quantum_q2": 16,
-      "aging_boost_interval": 200,
+      "quantum_q2": 10,
+      "round_robin_quantum": 4,
+      "aging_boost_interval": 106,
       "context_switch_time": 4
     },
-    "processes": [
+    "process_count": 5,
+    "process_inputs": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5
+      }
+    ],
+    "process_results": [
       {
         "pid": "P1",
         "arrival_time": 0,
         "burst_time": 9,
-        "input_order": 0,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 5,
         "start_time": 0,
-        "completion_time": 44
+        "completion_time": 44,
+        "turnaround_time": 44,
+        "waiting_time": 35,
+        "response_time": 0
       },
       {
         "pid": "P2",
         "arrival_time": 1,
         "burst_time": 4,
-        "input_order": 1,
-        "remaining_time": 0,
-        "current_queue": 0,
-        "quantum_used": 4,
         "start_time": 8,
-        "completion_time": 12
+        "completion_time": 12,
+        "turnaround_time": 11,
+        "waiting_time": 7,
+        "response_time": 7
       },
       {
         "pid": "P3",
         "arrival_time": 2,
         "burst_time": 7,
-        "input_order": 2,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 3,
         "start_time": 16,
-        "completion_time": 51
+        "completion_time": 51,
+        "turnaround_time": 49,
+        "waiting_time": 42,
+        "response_time": 14
       },
       {
         "pid": "P4",
         "arrival_time": 4,
         "burst_time": 3,
-        "input_order": 3,
-        "remaining_time": 0,
-        "current_queue": 0,
-        "quantum_used": 3,
         "start_time": 24,
-        "completion_time": 27
+        "completion_time": 27,
+        "turnaround_time": 23,
+        "waiting_time": 20,
+        "response_time": 20
       },
       {
         "pid": "P5",
         "arrival_time": 6,
         "burst_time": 5,
-        "input_order": 4,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 1,
         "start_time": 31,
-        "completion_time": 56
+        "completion_time": 56,
+        "turnaround_time": 50,
+        "waiting_time": 45,
+        "response_time": 25
       }
     ],
-    "gantt_log": [
+    "gantt_entries": [
       {
         "Task": "P1",
         "Start": 0,
         "Finish": 4,
-        "Queue": "Q0"
+        "Lane": "Q0"
       },
       {
         "Task": "CS Overhead",
         "Start": 4,
         "Finish": 8,
-        "Queue": "N/A"
+        "Lane": "N/A"
       },
       {
         "Task": "P2",
         "Start": 8,
         "Finish": 12,
-        "Queue": "Q0"
+        "Lane": "Q0"
       },
       {
         "Task": "CS Overhead",
         "Start": 12,
         "Finish": 16,
-        "Queue": "N/A"
+        "Lane": "N/A"
       },
       {
         "Task": "P3",
         "Start": 16,
         "Finish": 20,
-        "Queue": "Q0"
+        "Lane": "Q0"
       },
       {
         "Task": "CS Overhead",
         "Start": 20,
         "Finish": 24,
-        "Queue": "N/A"
+        "Lane": "N/A"
       },
       {
         "Task": "P4",
         "Start": 24,
         "Finish": 27,
-        "Queue": "Q0"
+        "Lane": "Q0"
       },
       {
         "Task": "CS Overhead",
         "Start": 27,
         "Finish": 31,
-        "Queue": "N/A"
+        "Lane": "N/A"
       },
       {
         "Task": "P5",
         "Start": 31,
         "Finish": 35,
-        "Queue": "Q0"
+        "Lane": "Q0"
       },
       {
         "Task": "CS Overhead",
         "Start": 35,
         "Finish": 39,
-        "Queue": "N/A"
+        "Lane": "N/A"
       },
       {
         "Task": "P1",
         "Start": 39,
         "Finish": 44,
-        "Queue": "Q1"
+        "Lane": "Q1"
       },
       {
         "Task": "CS Overhead",
         "Start": 44,
         "Finish": 48,
-        "Queue": "N/A"
+        "Lane": "N/A"
       },
       {
         "Task": "P3",
         "Start": 48,
         "Finish": 51,
-        "Queue": "Q1"
+        "Lane": "Q1"
       },
       {
         "Task": "CS Overhead",
         "Start": 51,
         "Finish": 55,
-        "Queue": "N/A"
+        "Lane": "N/A"
       },
       {
         "Task": "P5",
         "Start": 55,
         "Finish": 56,
-        "Queue": "Q1"
+        "Lane": "Q1"
       }
     ],
+    "makespan": 56,
     "throughput": 0.08928571428571429,
     "avg_turnaround": 35.4,
     "avg_waiting": 29.8,
     "avg_response": 13.2
   },
   {
-    "schema_version": 1,
-    "run_id": "bc9bbb73a5524f5c8e17c43de7cb62e2",
-    "timestamp": "2026-05-15T05:47:29.147366Z",
+    "run_id": "415ea1e8ea53455c82eeab5dc4c8779a",
+    "algorithm_key": "round_robin",
+    "algorithm_display_name": "Round Robin",
+    "timestamp": "2026-05-15T08:09:54.216382Z",
     "config_used": {
       "schema_version": 1,
       "quantum_q0": 4,
       "quantum_q1": 8,
-      "quantum_q2": 16,
-      "aging_boost_interval": 200,
+      "quantum_q2": 10,
+      "round_robin_quantum": 4,
+      "aging_boost_interval": 106,
       "context_switch_time": 4
     },
-    "processes": [
+    "process_count": 5,
+    "process_inputs": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5
+      }
+    ],
+    "process_results": [
       {
         "pid": "P1",
         "arrival_time": 0,
         "burst_time": 9,
-        "input_order": 0,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 5,
         "start_time": 0,
-        "completion_time": 49
+        "completion_time": 55,
+        "turnaround_time": 55,
+        "waiting_time": 46,
+        "response_time": 0
       },
       {
         "pid": "P2",
         "arrival_time": 1,
         "burst_time": 4,
-        "input_order": 1,
-        "remaining_time": 0,
-        "current_queue": 0,
-        "quantum_used": 4,
         "start_time": 8,
-        "completion_time": 12
+        "completion_time": 12,
+        "turnaround_time": 11,
+        "waiting_time": 7,
+        "response_time": 7
       },
       {
         "pid": "P3",
         "arrival_time": 2,
         "burst_time": 7,
-        "input_order": 2,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 3,
         "start_time": 16,
-        "completion_time": 56
+        "completion_time": 50,
+        "turnaround_time": 48,
+        "waiting_time": 41,
+        "response_time": 14
       },
       {
         "pid": "P4",
         "arrival_time": 4,
         "burst_time": 3,
-        "input_order": 3,
-        "remaining_time": 0,
-        "current_queue": 0,
-        "quantum_used": 3,
         "start_time": 24,
-        "completion_time": 27
+        "completion_time": 27,
+        "turnaround_time": 23,
+        "waiting_time": 20,
+        "response_time": 20
       },
       {
         "pid": "P5",
         "arrival_time": 6,
         "burst_time": 5,
-        "input_order": 4,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 1,
-        "start_time": 36,
-        "completion_time": 61
-      },
-      {
-        "pid": "p6",
-        "arrival_time": 5,
-        "burst_time": 1,
-        "input_order": 5,
-        "remaining_time": 0,
-        "current_queue": 0,
-        "quantum_used": 1,
-        "start_time": 31,
-        "completion_time": 32
+        "start_time": 39,
+        "completion_time": 60,
+        "turnaround_time": 54,
+        "waiting_time": 49,
+        "response_time": 33
       }
     ],
-    "gantt_log": [
+    "gantt_entries": [
       {
         "Task": "P1",
         "Start": 0,
         "Finish": 4,
-        "Queue": "Q0"
+        "Lane": "CPU"
       },
       {
         "Task": "CS Overhead",
         "Start": 4,
         "Finish": 8,
-        "Queue": "N/A"
+        "Lane": "CS"
       },
       {
         "Task": "P2",
         "Start": 8,
         "Finish": 12,
-        "Queue": "Q0"
+        "Lane": "CPU"
       },
       {
         "Task": "CS Overhead",
         "Start": 12,
         "Finish": 16,
-        "Queue": "N/A"
+        "Lane": "CS"
       },
       {
         "Task": "P3",
         "Start": 16,
         "Finish": 20,
-        "Queue": "Q0"
+        "Lane": "CPU"
       },
       {
         "Task": "CS Overhead",
         "Start": 20,
         "Finish": 24,
-        "Queue": "N/A"
+        "Lane": "CS"
       },
       {
         "Task": "P4",
         "Start": 24,
         "Finish": 27,
-        "Queue": "Q0"
+        "Lane": "CPU"
       },
       {
         "Task": "CS Overhead",
         "Start": 27,
         "Finish": 31,
-        "Queue": "N/A"
+        "Lane": "CS"
       },
       {
-        "Task": "p6",
+        "Task": "P1",
         "Start": 31,
-        "Finish": 32,
-        "Queue": "Q0"
+        "Finish": 35,
+        "Lane": "CPU"
       },
       {
         "Task": "CS Overhead",
-        "Start": 32,
-        "Finish": 36,
-        "Queue": "N/A"
+        "Start": 35,
+        "Finish": 39,
+        "Lane": "CS"
       },
       {
         "Task": "P5",
-        "Start": 36,
+        "Start": 39,
+        "Finish": 43,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 43,
+        "Finish": 47,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P3",
+        "Start": 47,
+        "Finish": 50,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 50,
+        "Finish": 54,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P1",
+        "Start": 54,
+        "Finish": 55,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 55,
+        "Finish": 59,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P5",
+        "Start": 59,
+        "Finish": 60,
+        "Lane": "CPU"
+      }
+    ],
+    "makespan": 60,
+    "throughput": 0.08333333333333333,
+    "avg_turnaround": 38.2,
+    "avg_waiting": 32.6,
+    "avg_response": 14.8
+  },
+  {
+    "run_id": "3cef8ad2ca6d4432ade0580508ac109b",
+    "algorithm_key": "fcfs",
+    "algorithm_display_name": "FCFS",
+    "timestamp": "2026-05-15T08:10:04.089697Z",
+    "config_used": {
+      "schema_version": 1,
+      "quantum_q0": 4,
+      "quantum_q1": 8,
+      "quantum_q2": 10,
+      "round_robin_quantum": 4,
+      "aging_boost_interval": 106,
+      "context_switch_time": 4
+    },
+    "process_count": 5,
+    "process_inputs": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5
+      }
+    ],
+    "process_results": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9,
+        "start_time": 0,
+        "completion_time": 9,
+        "turnaround_time": 9,
+        "waiting_time": 0,
+        "response_time": 0
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4,
+        "start_time": 13,
+        "completion_time": 17,
+        "turnaround_time": 16,
+        "waiting_time": 12,
+        "response_time": 12
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7,
+        "start_time": 21,
+        "completion_time": 28,
+        "turnaround_time": 26,
+        "waiting_time": 19,
+        "response_time": 19
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3,
+        "start_time": 32,
+        "completion_time": 35,
+        "turnaround_time": 31,
+        "waiting_time": 28,
+        "response_time": 28
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5,
+        "start_time": 39,
+        "completion_time": 44,
+        "turnaround_time": 38,
+        "waiting_time": 33,
+        "response_time": 33
+      }
+    ],
+    "gantt_entries": [
+      {
+        "Task": "P1",
+        "Start": 0,
+        "Finish": 9,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 9,
+        "Finish": 13,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P2",
+        "Start": 13,
+        "Finish": 17,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 17,
+        "Finish": 21,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P3",
+        "Start": 21,
+        "Finish": 28,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 28,
+        "Finish": 32,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P4",
+        "Start": 32,
+        "Finish": 35,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 35,
+        "Finish": 39,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P5",
+        "Start": 39,
+        "Finish": 44,
+        "Lane": "CPU"
+      }
+    ],
+    "makespan": 44,
+    "throughput": 0.11363636363636363,
+    "avg_turnaround": 24.0,
+    "avg_waiting": 18.4,
+    "avg_response": 18.4
+  },
+  {
+    "run_id": "9926c04c4cb04bc88e8588d0beb0ded8",
+    "algorithm_key": "mlfq",
+    "algorithm_display_name": "MLFQ",
+    "timestamp": "2026-05-15T08:10:15.772440Z",
+    "config_used": {
+      "schema_version": 1,
+      "quantum_q0": 4,
+      "quantum_q1": 8,
+      "quantum_q2": 10,
+      "round_robin_quantum": 4,
+      "aging_boost_interval": 106,
+      "context_switch_time": 4
+    },
+    "process_count": 5,
+    "process_inputs": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5
+      }
+    ],
+    "process_results": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9,
+        "start_time": 0,
+        "completion_time": 44,
+        "turnaround_time": 44,
+        "waiting_time": 35,
+        "response_time": 0
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4,
+        "start_time": 8,
+        "completion_time": 12,
+        "turnaround_time": 11,
+        "waiting_time": 7,
+        "response_time": 7
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7,
+        "start_time": 16,
+        "completion_time": 51,
+        "turnaround_time": 49,
+        "waiting_time": 42,
+        "response_time": 14
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3,
+        "start_time": 24,
+        "completion_time": 27,
+        "turnaround_time": 23,
+        "waiting_time": 20,
+        "response_time": 20
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5,
+        "start_time": 31,
+        "completion_time": 56,
+        "turnaround_time": 50,
+        "waiting_time": 45,
+        "response_time": 25
+      }
+    ],
+    "gantt_entries": [
+      {
+        "Task": "P1",
+        "Start": 0,
+        "Finish": 4,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 4,
+        "Finish": 8,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P2",
+        "Start": 8,
+        "Finish": 12,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 12,
+        "Finish": 16,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P3",
+        "Start": 16,
+        "Finish": 20,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 20,
+        "Finish": 24,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P4",
+        "Start": 24,
+        "Finish": 27,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 27,
+        "Finish": 31,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P5",
+        "Start": 31,
+        "Finish": 35,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 35,
+        "Finish": 39,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P1",
+        "Start": 39,
+        "Finish": 44,
+        "Lane": "Q1"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 44,
+        "Finish": 48,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P3",
+        "Start": 48,
+        "Finish": 51,
+        "Lane": "Q1"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 51,
+        "Finish": 55,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P5",
+        "Start": 55,
+        "Finish": 56,
+        "Lane": "Q1"
+      }
+    ],
+    "makespan": 56,
+    "throughput": 0.08928571428571429,
+    "avg_turnaround": 35.4,
+    "avg_waiting": 29.8,
+    "avg_response": 13.2
+  },
+  {
+    "run_id": "7a240e670c73426ebb8c72fda33301c3",
+    "algorithm_key": "fcfs",
+    "algorithm_display_name": "FCFS",
+    "timestamp": "2026-05-15T08:11:14.948376Z",
+    "config_used": {
+      "schema_version": 1,
+      "quantum_q0": 4,
+      "quantum_q1": 8,
+      "quantum_q2": 10,
+      "round_robin_quantum": 4,
+      "aging_boost_interval": 106,
+      "context_switch_time": 4
+    },
+    "process_count": 5,
+    "process_inputs": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5
+      }
+    ],
+    "process_results": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9,
+        "start_time": 0,
+        "completion_time": 9,
+        "turnaround_time": 9,
+        "waiting_time": 0,
+        "response_time": 0
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4,
+        "start_time": 13,
+        "completion_time": 17,
+        "turnaround_time": 16,
+        "waiting_time": 12,
+        "response_time": 12
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7,
+        "start_time": 21,
+        "completion_time": 28,
+        "turnaround_time": 26,
+        "waiting_time": 19,
+        "response_time": 19
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3,
+        "start_time": 32,
+        "completion_time": 35,
+        "turnaround_time": 31,
+        "waiting_time": 28,
+        "response_time": 28
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5,
+        "start_time": 39,
+        "completion_time": 44,
+        "turnaround_time": 38,
+        "waiting_time": 33,
+        "response_time": 33
+      }
+    ],
+    "gantt_entries": [
+      {
+        "Task": "P1",
+        "Start": 0,
+        "Finish": 9,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 9,
+        "Finish": 13,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P2",
+        "Start": 13,
+        "Finish": 17,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 17,
+        "Finish": 21,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P3",
+        "Start": 21,
+        "Finish": 28,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 28,
+        "Finish": 32,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P4",
+        "Start": 32,
+        "Finish": 35,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 35,
+        "Finish": 39,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P5",
+        "Start": 39,
+        "Finish": 44,
+        "Lane": "CPU"
+      }
+    ],
+    "makespan": 44,
+    "throughput": 0.11363636363636363,
+    "avg_turnaround": 24.0,
+    "avg_waiting": 18.4,
+    "avg_response": 18.4
+  },
+  {
+    "run_id": "598348434ea141ae83f9c4059ccc31c2",
+    "algorithm_key": "fcfs",
+    "algorithm_display_name": "FCFS",
+    "timestamp": "2026-05-15T08:11:57.520477Z",
+    "config_used": {
+      "schema_version": 1,
+      "quantum_q0": 4,
+      "quantum_q1": 8,
+      "quantum_q2": 10,
+      "round_robin_quantum": 4,
+      "aging_boost_interval": 106,
+      "context_switch_time": 4
+    },
+    "process_count": 5,
+    "process_inputs": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5
+      }
+    ],
+    "process_results": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9,
+        "start_time": 0,
+        "completion_time": 9,
+        "turnaround_time": 9,
+        "waiting_time": 0,
+        "response_time": 0
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4,
+        "start_time": 13,
+        "completion_time": 17,
+        "turnaround_time": 16,
+        "waiting_time": 12,
+        "response_time": 12
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7,
+        "start_time": 21,
+        "completion_time": 28,
+        "turnaround_time": 26,
+        "waiting_time": 19,
+        "response_time": 19
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3,
+        "start_time": 32,
+        "completion_time": 35,
+        "turnaround_time": 31,
+        "waiting_time": 28,
+        "response_time": 28
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5,
+        "start_time": 39,
+        "completion_time": 44,
+        "turnaround_time": 38,
+        "waiting_time": 33,
+        "response_time": 33
+      }
+    ],
+    "gantt_entries": [
+      {
+        "Task": "P1",
+        "Start": 0,
+        "Finish": 9,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 9,
+        "Finish": 13,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P2",
+        "Start": 13,
+        "Finish": 17,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 17,
+        "Finish": 21,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P3",
+        "Start": 21,
+        "Finish": 28,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 28,
+        "Finish": 32,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P4",
+        "Start": 32,
+        "Finish": 35,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 35,
+        "Finish": 39,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P5",
+        "Start": 39,
+        "Finish": 44,
+        "Lane": "CPU"
+      }
+    ],
+    "makespan": 44,
+    "throughput": 0.11363636363636363,
+    "avg_turnaround": 24.0,
+    "avg_waiting": 18.4,
+    "avg_response": 18.4
+  },
+  {
+    "run_id": "dff7c23deb9e45d7af8b9eb3159a379a",
+    "algorithm_key": "fcfs",
+    "algorithm_display_name": "FCFS",
+    "timestamp": "2026-05-15T08:13:09.617251Z",
+    "config_used": {
+      "schema_version": 1,
+      "quantum_q0": 4,
+      "quantum_q1": 8,
+      "quantum_q2": 10,
+      "round_robin_quantum": 4,
+      "aging_boost_interval": 106,
+      "context_switch_time": 4
+    },
+    "process_count": 5,
+    "process_inputs": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5
+      }
+    ],
+    "process_results": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9,
+        "start_time": 0,
+        "completion_time": 9,
+        "turnaround_time": 9,
+        "waiting_time": 0,
+        "response_time": 0
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4,
+        "start_time": 13,
+        "completion_time": 17,
+        "turnaround_time": 16,
+        "waiting_time": 12,
+        "response_time": 12
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7,
+        "start_time": 21,
+        "completion_time": 28,
+        "turnaround_time": 26,
+        "waiting_time": 19,
+        "response_time": 19
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3,
+        "start_time": 32,
+        "completion_time": 35,
+        "turnaround_time": 31,
+        "waiting_time": 28,
+        "response_time": 28
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5,
+        "start_time": 39,
+        "completion_time": 44,
+        "turnaround_time": 38,
+        "waiting_time": 33,
+        "response_time": 33
+      }
+    ],
+    "gantt_entries": [
+      {
+        "Task": "P1",
+        "Start": 0,
+        "Finish": 9,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 9,
+        "Finish": 13,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P2",
+        "Start": 13,
+        "Finish": 17,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 17,
+        "Finish": 21,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P3",
+        "Start": 21,
+        "Finish": 28,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 28,
+        "Finish": 32,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P4",
+        "Start": 32,
+        "Finish": 35,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 35,
+        "Finish": 39,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P5",
+        "Start": 39,
+        "Finish": 44,
+        "Lane": "CPU"
+      }
+    ],
+    "makespan": 44,
+    "throughput": 0.11363636363636363,
+    "avg_turnaround": 24.0,
+    "avg_waiting": 18.4,
+    "avg_response": 18.4
+  },
+  {
+    "run_id": "084762e479ef4df58e9ebb813df31fc1",
+    "algorithm_key": "fcfs",
+    "algorithm_display_name": "FCFS",
+    "timestamp": "2026-05-15T08:13:18.039760Z",
+    "config_used": {
+      "schema_version": 1,
+      "quantum_q0": 4,
+      "quantum_q1": 8,
+      "quantum_q2": 10,
+      "round_robin_quantum": 4,
+      "aging_boost_interval": 106,
+      "context_switch_time": 4
+    },
+    "process_count": 5,
+    "process_inputs": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5
+      }
+    ],
+    "process_results": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9,
+        "start_time": 0,
+        "completion_time": 9,
+        "turnaround_time": 9,
+        "waiting_time": 0,
+        "response_time": 0
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4,
+        "start_time": 13,
+        "completion_time": 17,
+        "turnaround_time": 16,
+        "waiting_time": 12,
+        "response_time": 12
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7,
+        "start_time": 21,
+        "completion_time": 28,
+        "turnaround_time": 26,
+        "waiting_time": 19,
+        "response_time": 19
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3,
+        "start_time": 32,
+        "completion_time": 35,
+        "turnaround_time": 31,
+        "waiting_time": 28,
+        "response_time": 28
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5,
+        "start_time": 39,
+        "completion_time": 44,
+        "turnaround_time": 38,
+        "waiting_time": 33,
+        "response_time": 33
+      }
+    ],
+    "gantt_entries": [
+      {
+        "Task": "P1",
+        "Start": 0,
+        "Finish": 9,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 9,
+        "Finish": 13,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P2",
+        "Start": 13,
+        "Finish": 17,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 17,
+        "Finish": 21,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P3",
+        "Start": 21,
+        "Finish": 28,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 28,
+        "Finish": 32,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P4",
+        "Start": 32,
+        "Finish": 35,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 35,
+        "Finish": 39,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P5",
+        "Start": 39,
+        "Finish": 44,
+        "Lane": "CPU"
+      }
+    ],
+    "makespan": 44,
+    "throughput": 0.11363636363636363,
+    "avg_turnaround": 24.0,
+    "avg_waiting": 18.4,
+    "avg_response": 18.4
+  },
+  {
+    "run_id": "0bfecb0ded5f4a7dbf25bde8fcc581f0",
+    "algorithm_key": "fcfs",
+    "algorithm_display_name": "FCFS",
+    "timestamp": "2026-05-15T08:13:20.701852Z",
+    "config_used": {
+      "schema_version": 1,
+      "quantum_q0": 4,
+      "quantum_q1": 8,
+      "quantum_q2": 10,
+      "round_robin_quantum": 4,
+      "aging_boost_interval": 106,
+      "context_switch_time": 4
+    },
+    "process_count": 5,
+    "process_inputs": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5
+      }
+    ],
+    "process_results": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9,
+        "start_time": 0,
+        "completion_time": 9,
+        "turnaround_time": 9,
+        "waiting_time": 0,
+        "response_time": 0
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4,
+        "start_time": 13,
+        "completion_time": 17,
+        "turnaround_time": 16,
+        "waiting_time": 12,
+        "response_time": 12
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7,
+        "start_time": 21,
+        "completion_time": 28,
+        "turnaround_time": 26,
+        "waiting_time": 19,
+        "response_time": 19
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3,
+        "start_time": 32,
+        "completion_time": 35,
+        "turnaround_time": 31,
+        "waiting_time": 28,
+        "response_time": 28
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5,
+        "start_time": 39,
+        "completion_time": 44,
+        "turnaround_time": 38,
+        "waiting_time": 33,
+        "response_time": 33
+      }
+    ],
+    "gantt_entries": [
+      {
+        "Task": "P1",
+        "Start": 0,
+        "Finish": 9,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 9,
+        "Finish": 13,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P2",
+        "Start": 13,
+        "Finish": 17,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 17,
+        "Finish": 21,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P3",
+        "Start": 21,
+        "Finish": 28,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 28,
+        "Finish": 32,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P4",
+        "Start": 32,
+        "Finish": 35,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 35,
+        "Finish": 39,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P5",
+        "Start": 39,
+        "Finish": 44,
+        "Lane": "CPU"
+      }
+    ],
+    "makespan": 44,
+    "throughput": 0.11363636363636363,
+    "avg_turnaround": 24.0,
+    "avg_waiting": 18.4,
+    "avg_response": 18.4
+  },
+  {
+    "run_id": "b5198cb2f28a41e6895a679af664cdd3",
+    "algorithm_key": "fcfs",
+    "algorithm_display_name": "FCFS",
+    "timestamp": "2026-05-15T08:13:24.662195Z",
+    "config_used": {
+      "schema_version": 1,
+      "quantum_q0": 4,
+      "quantum_q1": 8,
+      "quantum_q2": 10,
+      "round_robin_quantum": 4,
+      "aging_boost_interval": 106,
+      "context_switch_time": 4
+    },
+    "process_count": 5,
+    "process_inputs": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5
+      }
+    ],
+    "process_results": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9,
+        "start_time": 0,
+        "completion_time": 9,
+        "turnaround_time": 9,
+        "waiting_time": 0,
+        "response_time": 0
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4,
+        "start_time": 13,
+        "completion_time": 17,
+        "turnaround_time": 16,
+        "waiting_time": 12,
+        "response_time": 12
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7,
+        "start_time": 21,
+        "completion_time": 28,
+        "turnaround_time": 26,
+        "waiting_time": 19,
+        "response_time": 19
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3,
+        "start_time": 32,
+        "completion_time": 35,
+        "turnaround_time": 31,
+        "waiting_time": 28,
+        "response_time": 28
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5,
+        "start_time": 39,
+        "completion_time": 44,
+        "turnaround_time": 38,
+        "waiting_time": 33,
+        "response_time": 33
+      }
+    ],
+    "gantt_entries": [
+      {
+        "Task": "P1",
+        "Start": 0,
+        "Finish": 9,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 9,
+        "Finish": 13,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P2",
+        "Start": 13,
+        "Finish": 17,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 17,
+        "Finish": 21,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P3",
+        "Start": 21,
+        "Finish": 28,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 28,
+        "Finish": 32,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P4",
+        "Start": 32,
+        "Finish": 35,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 35,
+        "Finish": 39,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P5",
+        "Start": 39,
+        "Finish": 44,
+        "Lane": "CPU"
+      }
+    ],
+    "makespan": 44,
+    "throughput": 0.11363636363636363,
+    "avg_turnaround": 24.0,
+    "avg_waiting": 18.4,
+    "avg_response": 18.4
+  },
+  {
+    "run_id": "a68d3a5b37ae40d68f86f4ecbff53d22",
+    "algorithm_key": "fcfs",
+    "algorithm_display_name": "FCFS",
+    "timestamp": "2026-05-15T08:13:58.946574Z",
+    "config_used": {
+      "schema_version": 1,
+      "quantum_q0": 4,
+      "quantum_q1": 8,
+      "quantum_q2": 10,
+      "round_robin_quantum": 4,
+      "aging_boost_interval": 106,
+      "context_switch_time": 10
+    },
+    "process_count": 5,
+    "process_inputs": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5
+      }
+    ],
+    "process_results": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9,
+        "start_time": 0,
+        "completion_time": 9,
+        "turnaround_time": 9,
+        "waiting_time": 0,
+        "response_time": 0
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4,
+        "start_time": 19,
+        "completion_time": 23,
+        "turnaround_time": 22,
+        "waiting_time": 18,
+        "response_time": 18
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7,
+        "start_time": 33,
+        "completion_time": 40,
+        "turnaround_time": 38,
+        "waiting_time": 31,
+        "response_time": 31
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3,
+        "start_time": 50,
+        "completion_time": 53,
+        "turnaround_time": 49,
+        "waiting_time": 46,
+        "response_time": 46
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5,
+        "start_time": 63,
+        "completion_time": 68,
+        "turnaround_time": 62,
+        "waiting_time": 57,
+        "response_time": 57
+      }
+    ],
+    "gantt_entries": [
+      {
+        "Task": "P1",
+        "Start": 0,
+        "Finish": 9,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 9,
+        "Finish": 19,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P2",
+        "Start": 19,
+        "Finish": 23,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 23,
+        "Finish": 33,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P3",
+        "Start": 33,
         "Finish": 40,
-        "Queue": "Q0"
+        "Lane": "CPU"
       },
       {
         "Task": "CS Overhead",
         "Start": 40,
-        "Finish": 44,
-        "Queue": "N/A"
+        "Finish": 50,
+        "Lane": "CS"
       },
       {
-        "Task": "P1",
-        "Start": 44,
-        "Finish": 49,
-        "Queue": "Q1"
+        "Task": "P4",
+        "Start": 50,
+        "Finish": 53,
+        "Lane": "CPU"
       },
       {
         "Task": "CS Overhead",
-        "Start": 49,
+        "Start": 53,
+        "Finish": 63,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P5",
+        "Start": 63,
+        "Finish": 68,
+        "Lane": "CPU"
+      }
+    ],
+    "makespan": 68,
+    "throughput": 0.07352941176470588,
+    "avg_turnaround": 36.0,
+    "avg_waiting": 30.4,
+    "avg_response": 30.4
+  },
+  {
+    "run_id": "0a5e7e68d24b4cb59edd64b41c7058cd",
+    "algorithm_key": "round_robin",
+    "algorithm_display_name": "Round Robin",
+    "timestamp": "2026-05-15T08:14:25.579240Z",
+    "config_used": {
+      "schema_version": 1,
+      "quantum_q0": 4,
+      "quantum_q1": 8,
+      "quantum_q2": 10,
+      "round_robin_quantum": 4,
+      "aging_boost_interval": 106,
+      "context_switch_time": 10
+    },
+    "process_count": 5,
+    "process_inputs": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5
+      }
+    ],
+    "process_results": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9,
+        "start_time": 0,
+        "completion_time": 97,
+        "turnaround_time": 97,
+        "waiting_time": 88,
+        "response_time": 0
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4,
+        "start_time": 14,
+        "completion_time": 18,
+        "turnaround_time": 17,
+        "waiting_time": 13,
+        "response_time": 13
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7,
+        "start_time": 28,
+        "completion_time": 86,
+        "turnaround_time": 84,
+        "waiting_time": 77,
+        "response_time": 26
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3,
+        "start_time": 42,
+        "completion_time": 45,
+        "turnaround_time": 41,
+        "waiting_time": 38,
+        "response_time": 38
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5,
+        "start_time": 69,
+        "completion_time": 108,
+        "turnaround_time": 102,
+        "waiting_time": 97,
+        "response_time": 63
+      }
+    ],
+    "gantt_entries": [
+      {
+        "Task": "P1",
+        "Start": 0,
+        "Finish": 4,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 4,
+        "Finish": 14,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P2",
+        "Start": 14,
+        "Finish": 18,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 18,
+        "Finish": 28,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P3",
+        "Start": 28,
+        "Finish": 32,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 32,
+        "Finish": 42,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P4",
+        "Start": 42,
+        "Finish": 45,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 45,
+        "Finish": 55,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P1",
+        "Start": 55,
+        "Finish": 59,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 59,
+        "Finish": 69,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P5",
+        "Start": 69,
+        "Finish": 73,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 73,
+        "Finish": 83,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P3",
+        "Start": 83,
+        "Finish": 86,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 86,
+        "Finish": 96,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P1",
+        "Start": 96,
+        "Finish": 97,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 97,
+        "Finish": 107,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P5",
+        "Start": 107,
+        "Finish": 108,
+        "Lane": "CPU"
+      }
+    ],
+    "makespan": 108,
+    "throughput": 0.046296296296296294,
+    "avg_turnaround": 68.2,
+    "avg_waiting": 62.6,
+    "avg_response": 28.0
+  },
+  {
+    "run_id": "2bb2521be6724aec95d6ed74cdd1ab6a",
+    "algorithm_key": "mlfq",
+    "algorithm_display_name": "MLFQ",
+    "timestamp": "2026-05-15T08:14:38.544755Z",
+    "config_used": {
+      "schema_version": 1,
+      "quantum_q0": 4,
+      "quantum_q1": 8,
+      "quantum_q2": 10,
+      "round_robin_quantum": 4,
+      "aging_boost_interval": 106,
+      "context_switch_time": 10
+    },
+    "process_count": 5,
+    "process_inputs": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5
+      }
+    ],
+    "process_results": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9,
+        "start_time": 0,
+        "completion_time": 74,
+        "turnaround_time": 74,
+        "waiting_time": 65,
+        "response_time": 0
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4,
+        "start_time": 14,
+        "completion_time": 18,
+        "turnaround_time": 17,
+        "waiting_time": 13,
+        "response_time": 13
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7,
+        "start_time": 28,
+        "completion_time": 87,
+        "turnaround_time": 85,
+        "waiting_time": 78,
+        "response_time": 26
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3,
+        "start_time": 42,
+        "completion_time": 45,
+        "turnaround_time": 41,
+        "waiting_time": 38,
+        "response_time": 38
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5,
+        "start_time": 55,
+        "completion_time": 98,
+        "turnaround_time": 92,
+        "waiting_time": 87,
+        "response_time": 49
+      }
+    ],
+    "gantt_entries": [
+      {
+        "Task": "P1",
+        "Start": 0,
+        "Finish": 4,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 4,
+        "Finish": 14,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P2",
+        "Start": 14,
+        "Finish": 18,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 18,
+        "Finish": 28,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P3",
+        "Start": 28,
+        "Finish": 32,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 32,
+        "Finish": 42,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P4",
+        "Start": 42,
+        "Finish": 45,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 45,
+        "Finish": 55,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P5",
+        "Start": 55,
+        "Finish": 59,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 59,
+        "Finish": 69,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P1",
+        "Start": 69,
+        "Finish": 74,
+        "Lane": "Q1"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 74,
+        "Finish": 84,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P3",
+        "Start": 84,
+        "Finish": 87,
+        "Lane": "Q1"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 87,
+        "Finish": 97,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P5",
+        "Start": 97,
+        "Finish": 98,
+        "Lane": "Q1"
+      }
+    ],
+    "makespan": 98,
+    "throughput": 0.05102040816326531,
+    "avg_turnaround": 61.8,
+    "avg_waiting": 56.2,
+    "avg_response": 25.2
+  },
+  {
+    "run_id": "bce79ea3252a42429bca5a9af0703528",
+    "algorithm_key": "fcfs",
+    "algorithm_display_name": "FCFS",
+    "timestamp": "2026-05-15T08:15:16.986966Z",
+    "config_used": {
+      "schema_version": 1,
+      "quantum_q0": 4,
+      "quantum_q1": 8,
+      "quantum_q2": 10,
+      "round_robin_quantum": 4,
+      "aging_boost_interval": 106,
+      "context_switch_time": 10
+    },
+    "process_count": 5,
+    "process_inputs": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5
+      }
+    ],
+    "process_results": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9,
+        "start_time": 0,
+        "completion_time": 9,
+        "turnaround_time": 9,
+        "waiting_time": 0,
+        "response_time": 0
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4,
+        "start_time": 19,
+        "completion_time": 23,
+        "turnaround_time": 22,
+        "waiting_time": 18,
+        "response_time": 18
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7,
+        "start_time": 33,
+        "completion_time": 40,
+        "turnaround_time": 38,
+        "waiting_time": 31,
+        "response_time": 31
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3,
+        "start_time": 50,
+        "completion_time": 53,
+        "turnaround_time": 49,
+        "waiting_time": 46,
+        "response_time": 46
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5,
+        "start_time": 63,
+        "completion_time": 68,
+        "turnaround_time": 62,
+        "waiting_time": 57,
+        "response_time": 57
+      }
+    ],
+    "gantt_entries": [
+      {
+        "Task": "P1",
+        "Start": 0,
+        "Finish": 9,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 9,
+        "Finish": 19,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P2",
+        "Start": 19,
+        "Finish": 23,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 23,
+        "Finish": 33,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P3",
+        "Start": 33,
+        "Finish": 40,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 40,
+        "Finish": 50,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P4",
+        "Start": 50,
         "Finish": 53,
-        "Queue": "N/A"
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 53,
+        "Finish": 63,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P5",
+        "Start": 63,
+        "Finish": 68,
+        "Lane": "CPU"
+      }
+    ],
+    "makespan": 68,
+    "throughput": 0.07352941176470588,
+    "avg_turnaround": 36.0,
+    "avg_waiting": 30.4,
+    "avg_response": 30.4
+  },
+  {
+    "run_id": "b73e21c7a2ec4104b4dc2a5248f8f690",
+    "algorithm_key": "fcfs",
+    "algorithm_display_name": "FCFS",
+    "timestamp": "2026-05-15T08:15:25.879443Z",
+    "config_used": {
+      "schema_version": 1,
+      "quantum_q0": 4,
+      "quantum_q1": 8,
+      "quantum_q2": 10,
+      "round_robin_quantum": 4,
+      "aging_boost_interval": 106,
+      "context_switch_time": 20
+    },
+    "process_count": 5,
+    "process_inputs": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5
+      }
+    ],
+    "process_results": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9,
+        "start_time": 0,
+        "completion_time": 9,
+        "turnaround_time": 9,
+        "waiting_time": 0,
+        "response_time": 0
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4,
+        "start_time": 29,
+        "completion_time": 33,
+        "turnaround_time": 32,
+        "waiting_time": 28,
+        "response_time": 28
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7,
+        "start_time": 53,
+        "completion_time": 60,
+        "turnaround_time": 58,
+        "waiting_time": 51,
+        "response_time": 51
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3,
+        "start_time": 80,
+        "completion_time": 83,
+        "turnaround_time": 79,
+        "waiting_time": 76,
+        "response_time": 76
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5,
+        "start_time": 103,
+        "completion_time": 108,
+        "turnaround_time": 102,
+        "waiting_time": 97,
+        "response_time": 97
+      }
+    ],
+    "gantt_entries": [
+      {
+        "Task": "P1",
+        "Start": 0,
+        "Finish": 9,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 9,
+        "Finish": 29,
+        "Lane": "CS"
+      },
+      {
+        "Task": "P2",
+        "Start": 29,
+        "Finish": 33,
+        "Lane": "CPU"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 33,
+        "Finish": 53,
+        "Lane": "CS"
       },
       {
         "Task": "P3",
         "Start": 53,
-        "Finish": 56,
-        "Queue": "Q1"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 56,
         "Finish": 60,
-        "Queue": "N/A"
+        "Lane": "CPU"
       },
       {
-        "Task": "P5",
+        "Task": "CS Overhead",
         "Start": 60,
-        "Finish": 61,
-        "Queue": "Q1"
-      }
-    ],
-    "throughput": 0.09836065573770492,
-    "avg_turnaround": 36.5,
-    "avg_waiting": 31.666666666666668,
-    "avg_response": 16.166666666666668
-  },
-  {
-    "schema_version": 1,
-    "run_id": "e9e516cf0f2640f0aaa2f86bbadb1b78",
-    "timestamp": "2026-05-15T05:48:28.573272Z",
-    "config_used": {
-      "schema_version": 1,
-      "quantum_q0": 4,
-      "quantum_q1": 8,
-      "quantum_q2": 16,
-      "aging_boost_interval": 200,
-      "context_switch_time": 4
-    },
-    "processes": [
-      {
-        "pid": "P1",
-        "arrival_time": 0,
-        "burst_time": 9,
-        "input_order": 0,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 5,
-        "start_time": 0,
-        "completion_time": 44
-      },
-      {
-        "pid": "P2",
-        "arrival_time": 1,
-        "burst_time": 4,
-        "input_order": 1,
-        "remaining_time": 0,
-        "current_queue": 0,
-        "quantum_used": 4,
-        "start_time": 8,
-        "completion_time": 12
-      },
-      {
-        "pid": "P3",
-        "arrival_time": 2,
-        "burst_time": 7,
-        "input_order": 2,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 3,
-        "start_time": 16,
-        "completion_time": 51
-      },
-      {
-        "pid": "P4",
-        "arrival_time": 4,
-        "burst_time": 3,
-        "input_order": 3,
-        "remaining_time": 0,
-        "current_queue": 0,
-        "quantum_used": 3,
-        "start_time": 24,
-        "completion_time": 27
-      },
-      {
-        "pid": "P5",
-        "arrival_time": 6,
-        "burst_time": 5,
-        "input_order": 4,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 1,
-        "start_time": 31,
-        "completion_time": 56
-      }
-    ],
-    "gantt_log": [
-      {
-        "Task": "P1",
-        "Start": 0,
-        "Finish": 4,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 4,
-        "Finish": 8,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P2",
-        "Start": 8,
-        "Finish": 12,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 12,
-        "Finish": 16,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P3",
-        "Start": 16,
-        "Finish": 20,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 20,
-        "Finish": 24,
-        "Queue": "N/A"
+        "Finish": 80,
+        "Lane": "CS"
       },
       {
         "Task": "P4",
-        "Start": 24,
-        "Finish": 27,
-        "Queue": "Q0"
+        "Start": 80,
+        "Finish": 83,
+        "Lane": "CPU"
       },
       {
         "Task": "CS Overhead",
-        "Start": 27,
-        "Finish": 31,
-        "Queue": "N/A"
+        "Start": 83,
+        "Finish": 103,
+        "Lane": "CS"
       },
       {
         "Task": "P5",
-        "Start": 31,
-        "Finish": 35,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 35,
-        "Finish": 39,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P1",
-        "Start": 39,
-        "Finish": 44,
-        "Queue": "Q1"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 44,
-        "Finish": 48,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P3",
-        "Start": 48,
-        "Finish": 51,
-        "Queue": "Q1"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 51,
-        "Finish": 55,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P5",
-        "Start": 55,
-        "Finish": 56,
-        "Queue": "Q1"
+        "Start": 103,
+        "Finish": 108,
+        "Lane": "CPU"
       }
     ],
-    "throughput": 0.08928571428571429,
-    "avg_turnaround": 35.4,
-    "avg_waiting": 29.8,
-    "avg_response": 13.2
+    "makespan": 108,
+    "throughput": 0.046296296296296294,
+    "avg_turnaround": 56.0,
+    "avg_waiting": 50.4,
+    "avg_response": 50.4
   },
   {
-    "schema_version": 1,
-    "run_id": "1f7487c5818542bd93ed5730f874954a",
-    "timestamp": "2026-05-15T05:48:53.987462Z",
+    "run_id": "1d516e170da548d48e3240ce08a87726",
+    "algorithm_key": "mlfq",
+    "algorithm_display_name": "MLFQ",
+    "timestamp": "2026-05-15T08:18:18.606276Z",
     "config_used": {
       "schema_version": 1,
       "quantum_q0": 4,
       "quantum_q1": 8,
       "quantum_q2": 10,
+      "round_robin_quantum": 4,
       "aging_boost_interval": 106,
-      "context_switch_time": 4
+      "context_switch_time": 20
     },
-    "processes": [
+    "process_count": 5,
+    "process_inputs": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5
+      }
+    ],
+    "process_results": [
       {
         "pid": "P1",
         "arrival_time": 0,
         "burst_time": 9,
-        "input_order": 0,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 5,
         "start_time": 0,
-        "completion_time": 44
+        "completion_time": 188,
+        "turnaround_time": 188,
+        "waiting_time": 179,
+        "response_time": 0
       },
       {
         "pid": "P2",
         "arrival_time": 1,
         "burst_time": 4,
-        "input_order": 1,
-        "remaining_time": 0,
-        "current_queue": 0,
-        "quantum_used": 4,
-        "start_time": 8,
-        "completion_time": 12
+        "start_time": 24,
+        "completion_time": 28,
+        "turnaround_time": 27,
+        "waiting_time": 23,
+        "response_time": 23
       },
       {
         "pid": "P3",
         "arrival_time": 2,
         "burst_time": 7,
-        "input_order": 2,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 3,
-        "start_time": 16,
-        "completion_time": 51
+        "start_time": 48,
+        "completion_time": 146,
+        "turnaround_time": 144,
+        "waiting_time": 137,
+        "response_time": 46
       },
       {
         "pid": "P4",
         "arrival_time": 4,
         "burst_time": 3,
-        "input_order": 3,
-        "remaining_time": 0,
-        "current_queue": 0,
-        "quantum_used": 3,
-        "start_time": 24,
-        "completion_time": 27
+        "start_time": 72,
+        "completion_time": 75,
+        "turnaround_time": 71,
+        "waiting_time": 68,
+        "response_time": 68
       },
       {
         "pid": "P5",
         "arrival_time": 6,
         "burst_time": 5,
-        "input_order": 4,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 1,
-        "start_time": 31,
-        "completion_time": 56
+        "start_time": 95,
+        "completion_time": 167,
+        "turnaround_time": 161,
+        "waiting_time": 156,
+        "response_time": 89
       }
     ],
-    "gantt_log": [
+    "gantt_entries": [
       {
         "Task": "P1",
         "Start": 0,
         "Finish": 4,
-        "Queue": "Q0"
+        "Lane": "Q0"
       },
       {
         "Task": "CS Overhead",
         "Start": 4,
-        "Finish": 8,
-        "Queue": "N/A"
+        "Finish": 24,
+        "Lane": "N/A"
       },
       {
         "Task": "P2",
-        "Start": 8,
-        "Finish": 12,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 12,
-        "Finish": 16,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P3",
-        "Start": 16,
-        "Finish": 20,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 20,
-        "Finish": 24,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P4",
         "Start": 24,
-        "Finish": 27,
-        "Queue": "Q0"
+        "Finish": 28,
+        "Lane": "Q0"
       },
       {
         "Task": "CS Overhead",
-        "Start": 27,
-        "Finish": 31,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P5",
-        "Start": 31,
-        "Finish": 35,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 35,
-        "Finish": 39,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P1",
-        "Start": 39,
-        "Finish": 44,
-        "Queue": "Q1"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 44,
+        "Start": 28,
         "Finish": 48,
-        "Queue": "N/A"
+        "Lane": "N/A"
       },
       {
         "Task": "P3",
         "Start": 48,
-        "Finish": 51,
-        "Queue": "Q1"
+        "Finish": 52,
+        "Lane": "Q0"
       },
       {
         "Task": "CS Overhead",
-        "Start": 51,
-        "Finish": 55,
-        "Queue": "N/A"
+        "Start": 52,
+        "Finish": 72,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P4",
+        "Start": 72,
+        "Finish": 75,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 75,
+        "Finish": 95,
+        "Lane": "N/A"
       },
       {
         "Task": "P5",
-        "Start": 55,
-        "Finish": 56,
-        "Queue": "Q1"
+        "Start": 95,
+        "Finish": 99,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 99,
+        "Finish": 119,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P1",
+        "Start": 119,
+        "Finish": 123,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 123,
+        "Finish": 143,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P3",
+        "Start": 143,
+        "Finish": 146,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 146,
+        "Finish": 166,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P5",
+        "Start": 166,
+        "Finish": 167,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 167,
+        "Finish": 187,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P1",
+        "Start": 187,
+        "Finish": 188,
+        "Lane": "Q1"
       }
     ],
-    "throughput": 0.08928571428571429,
-    "avg_turnaround": 35.4,
-    "avg_waiting": 29.8,
-    "avg_response": 13.2
+    "makespan": 188,
+    "throughput": 0.026595744680851064,
+    "avg_turnaround": 118.2,
+    "avg_waiting": 112.6,
+    "avg_response": 45.2
   },
   {
-    "schema_version": 1,
-    "run_id": "72ffe3f258b44f6ba9ef89ae9cd8aff6",
-    "timestamp": "2026-05-15T08:22:22.235129Z",
+    "run_id": "12d0095f9f6f4b5a96ffca46e2f2bcac",
+    "algorithm_key": "mlfq",
+    "algorithm_display_name": "MLFQ",
+    "timestamp": "2026-05-15T08:20:16.819997Z",
     "config_used": {
       "schema_version": 1,
       "quantum_q0": 4,
       "quantum_q1": 8,
       "quantum_q2": 10,
+      "round_robin_quantum": 4,
       "aging_boost_interval": 106,
-      "context_switch_time": 4
+      "context_switch_time": 20
     },
-    "processes": [
+    "process_count": 5,
+    "process_inputs": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 20,
+        "burst_time": 5
+      }
+    ],
+    "process_results": [
       {
         "pid": "P1",
         "arrival_time": 0,
         "burst_time": 9,
-        "input_order": 0,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 5,
         "start_time": 0,
-        "completion_time": 44
+        "completion_time": 188,
+        "turnaround_time": 188,
+        "waiting_time": 179,
+        "response_time": 0
       },
       {
         "pid": "P2",
         "arrival_time": 1,
         "burst_time": 4,
-        "input_order": 1,
-        "remaining_time": 0,
-        "current_queue": 0,
-        "quantum_used": 4,
-        "start_time": 8,
-        "completion_time": 12
+        "start_time": 24,
+        "completion_time": 28,
+        "turnaround_time": 27,
+        "waiting_time": 23,
+        "response_time": 23
       },
       {
         "pid": "P3",
         "arrival_time": 2,
         "burst_time": 7,
-        "input_order": 2,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 3,
-        "start_time": 16,
-        "completion_time": 51
+        "start_time": 48,
+        "completion_time": 146,
+        "turnaround_time": 144,
+        "waiting_time": 137,
+        "response_time": 46
       },
       {
         "pid": "P4",
         "arrival_time": 4,
         "burst_time": 3,
-        "input_order": 3,
-        "remaining_time": 0,
-        "current_queue": 0,
-        "quantum_used": 3,
+        "start_time": 72,
+        "completion_time": 75,
+        "turnaround_time": 71,
+        "waiting_time": 68,
+        "response_time": 68
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 20,
+        "burst_time": 5,
+        "start_time": 95,
+        "completion_time": 167,
+        "turnaround_time": 147,
+        "waiting_time": 142,
+        "response_time": 75
+      }
+    ],
+    "gantt_entries": [
+      {
+        "Task": "P1",
+        "Start": 0,
+        "Finish": 4,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 4,
+        "Finish": 24,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P2",
+        "Start": 24,
+        "Finish": 28,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 28,
+        "Finish": 48,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P3",
+        "Start": 48,
+        "Finish": 52,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 52,
+        "Finish": 72,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P4",
+        "Start": 72,
+        "Finish": 75,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 75,
+        "Finish": 95,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P5",
+        "Start": 95,
+        "Finish": 99,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 99,
+        "Finish": 119,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P1",
+        "Start": 119,
+        "Finish": 123,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 123,
+        "Finish": 143,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P3",
+        "Start": 143,
+        "Finish": 146,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 146,
+        "Finish": 166,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P5",
+        "Start": 166,
+        "Finish": 167,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 167,
+        "Finish": 187,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P1",
+        "Start": 187,
+        "Finish": 188,
+        "Lane": "Q1"
+      }
+    ],
+    "makespan": 188,
+    "throughput": 0.026595744680851064,
+    "avg_turnaround": 115.4,
+    "avg_waiting": 109.8,
+    "avg_response": 42.4
+  },
+  {
+    "run_id": "d10b7eb6ebd9410291443333d1caa56d",
+    "algorithm_key": "mlfq",
+    "algorithm_display_name": "MLFQ",
+    "timestamp": "2026-05-15T08:20:28.027035Z",
+    "config_used": {
+      "schema_version": 1,
+      "quantum_q0": 4,
+      "quantum_q1": 8,
+      "quantum_q2": 10,
+      "round_robin_quantum": 4,
+      "aging_boost_interval": 106,
+      "context_switch_time": 20
+    },
+    "process_count": 5,
+    "process_inputs": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 100,
+        "burst_time": 5
+      }
+    ],
+    "process_results": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9,
+        "start_time": 0,
+        "completion_time": 100,
+        "turnaround_time": 100,
+        "waiting_time": 91,
+        "response_time": 0
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4,
         "start_time": 24,
-        "completion_time": 27
+        "completion_time": 28,
+        "turnaround_time": 27,
+        "waiting_time": 23,
+        "response_time": 23
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7,
+        "start_time": 48,
+        "completion_time": 147,
+        "turnaround_time": 145,
+        "waiting_time": 138,
+        "response_time": 46
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3,
+        "start_time": 72,
+        "completion_time": 75,
+        "turnaround_time": 71,
+        "waiting_time": 68,
+        "response_time": 68
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 100,
+        "burst_time": 5,
+        "start_time": 120,
+        "completion_time": 168,
+        "turnaround_time": 68,
+        "waiting_time": 63,
+        "response_time": 20
+      }
+    ],
+    "gantt_entries": [
+      {
+        "Task": "P1",
+        "Start": 0,
+        "Finish": 4,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 4,
+        "Finish": 24,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P2",
+        "Start": 24,
+        "Finish": 28,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 28,
+        "Finish": 48,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P3",
+        "Start": 48,
+        "Finish": 52,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 52,
+        "Finish": 72,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P4",
+        "Start": 72,
+        "Finish": 75,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 75,
+        "Finish": 95,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P1",
+        "Start": 95,
+        "Finish": 100,
+        "Lane": "Q1"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 100,
+        "Finish": 120,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P5",
+        "Start": 120,
+        "Finish": 124,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 124,
+        "Finish": 144,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P3",
+        "Start": 144,
+        "Finish": 147,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 147,
+        "Finish": 167,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P5",
+        "Start": 167,
+        "Finish": 168,
+        "Lane": "Q1"
+      }
+    ],
+    "makespan": 168,
+    "throughput": 0.02976190476190476,
+    "avg_turnaround": 82.2,
+    "avg_waiting": 76.6,
+    "avg_response": 31.4
+  },
+  {
+    "run_id": "c94cc8e7ac9d44889911b60743f1cd42",
+    "algorithm_key": "mlfq",
+    "algorithm_display_name": "MLFQ",
+    "timestamp": "2026-05-15T08:20:39.891802Z",
+    "config_used": {
+      "schema_version": 1,
+      "quantum_q0": 4,
+      "quantum_q1": 8,
+      "quantum_q2": 10,
+      "round_robin_quantum": 4,
+      "aging_boost_interval": 106,
+      "context_switch_time": 20
+    },
+    "process_count": 5,
+    "process_inputs": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 100,
+        "burst_time": 5
+      }
+    ],
+    "process_results": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9,
+        "start_time": 0,
+        "completion_time": 100,
+        "turnaround_time": 100,
+        "waiting_time": 91,
+        "response_time": 0
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4,
+        "start_time": 24,
+        "completion_time": 28,
+        "turnaround_time": 27,
+        "waiting_time": 23,
+        "response_time": 23
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7,
+        "start_time": 48,
+        "completion_time": 147,
+        "turnaround_time": 145,
+        "waiting_time": 138,
+        "response_time": 46
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3,
+        "start_time": 72,
+        "completion_time": 75,
+        "turnaround_time": 71,
+        "waiting_time": 68,
+        "response_time": 68
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 100,
+        "burst_time": 5,
+        "start_time": 120,
+        "completion_time": 168,
+        "turnaround_time": 68,
+        "waiting_time": 63,
+        "response_time": 20
+      }
+    ],
+    "gantt_entries": [
+      {
+        "Task": "P1",
+        "Start": 0,
+        "Finish": 4,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 4,
+        "Finish": 24,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P2",
+        "Start": 24,
+        "Finish": 28,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 28,
+        "Finish": 48,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P3",
+        "Start": 48,
+        "Finish": 52,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 52,
+        "Finish": 72,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P4",
+        "Start": 72,
+        "Finish": 75,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 75,
+        "Finish": 95,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P1",
+        "Start": 95,
+        "Finish": 100,
+        "Lane": "Q1"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 100,
+        "Finish": 120,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P5",
+        "Start": 120,
+        "Finish": 124,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 124,
+        "Finish": 144,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P3",
+        "Start": 144,
+        "Finish": 147,
+        "Lane": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 147,
+        "Finish": 167,
+        "Lane": "N/A"
+      },
+      {
+        "Task": "P5",
+        "Start": 167,
+        "Finish": 168,
+        "Lane": "Q1"
+      }
+    ],
+    "makespan": 168,
+    "throughput": 0.02976190476190476,
+    "avg_turnaround": 82.2,
+    "avg_waiting": 76.6,
+    "avg_response": 31.4
+  },
+  {
+    "run_id": "1904ba9567e7417c8e8114825916b0c9",
+    "algorithm_key": "fcfs",
+    "algorithm_display_name": "FCFS",
+    "timestamp": "2026-05-15T08:40:28.846906Z",
+    "config_used": {
+      "schema_version": 1,
+      "quantum_q0": 4,
+      "quantum_q1": 8,
+      "quantum_q2": 10,
+      "round_robin_quantum": 4,
+      "aging_boost_interval": 106,
+      "context_switch_time": 20
+    },
+    "process_count": 5,
+    "process_inputs": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5
+      }
+    ],
+    "process_results": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9,
+        "start_time": 0,
+        "completion_time": 9,
+        "turnaround_time": 9,
+        "waiting_time": 0,
+        "response_time": 0
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4,
+        "start_time": 29,
+        "completion_time": 33,
+        "turnaround_time": 32,
+        "waiting_time": 28,
+        "response_time": 28
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7,
+        "start_time": 53,
+        "completion_time": 60,
+        "turnaround_time": 58,
+        "waiting_time": 51,
+        "response_time": 51
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3,
+        "start_time": 80,
+        "completion_time": 83,
+        "turnaround_time": 79,
+        "waiting_time": 76,
+        "response_time": 76
       },
       {
         "pid": "P5",
         "arrival_time": 6,
         "burst_time": 5,
-        "input_order": 4,
-        "remaining_time": 0,
-        "current_queue": 1,
-        "quantum_used": 1,
-        "start_time": 31,
-        "completion_time": 56
+        "start_time": 103,
+        "completion_time": 108,
+        "turnaround_time": 102,
+        "waiting_time": 97,
+        "response_time": 97
       }
     ],
-    "gantt_log": [
+    "gantt_entries": [
       {
         "Task": "P1",
         "Start": 0,
-        "Finish": 4,
-        "Queue": "Q0"
+        "Finish": 9,
+        "Lane": "CPU"
       },
       {
         "Task": "CS Overhead",
-        "Start": 4,
-        "Finish": 8,
-        "Queue": "N/A"
+        "Start": 9,
+        "Finish": 29,
+        "Lane": "CS"
       },
       {
         "Task": "P2",
-        "Start": 8,
-        "Finish": 12,
-        "Queue": "Q0"
+        "Start": 29,
+        "Finish": 33,
+        "Lane": "CPU"
       },
       {
         "Task": "CS Overhead",
-        "Start": 12,
-        "Finish": 16,
-        "Queue": "N/A"
+        "Start": 33,
+        "Finish": 53,
+        "Lane": "CS"
       },
       {
         "Task": "P3",
-        "Start": 16,
-        "Finish": 20,
-        "Queue": "Q0"
+        "Start": 53,
+        "Finish": 60,
+        "Lane": "CPU"
       },
       {
         "Task": "CS Overhead",
-        "Start": 20,
-        "Finish": 24,
-        "Queue": "N/A"
+        "Start": 60,
+        "Finish": 80,
+        "Lane": "CS"
       },
       {
         "Task": "P4",
-        "Start": 24,
-        "Finish": 27,
-        "Queue": "Q0"
+        "Start": 80,
+        "Finish": 83,
+        "Lane": "CPU"
       },
       {
         "Task": "CS Overhead",
-        "Start": 27,
-        "Finish": 31,
-        "Queue": "N/A"
+        "Start": 83,
+        "Finish": 103,
+        "Lane": "CS"
       },
       {
         "Task": "P5",
-        "Start": 31,
-        "Finish": 35,
-        "Queue": "Q0"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 35,
-        "Finish": 39,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P1",
-        "Start": 39,
-        "Finish": 44,
-        "Queue": "Q1"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 44,
-        "Finish": 48,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P3",
-        "Start": 48,
-        "Finish": 51,
-        "Queue": "Q1"
-      },
-      {
-        "Task": "CS Overhead",
-        "Start": 51,
-        "Finish": 55,
-        "Queue": "N/A"
-      },
-      {
-        "Task": "P5",
-        "Start": 55,
-        "Finish": 56,
-        "Queue": "Q1"
+        "Start": 103,
+        "Finish": 108,
+        "Lane": "CPU"
       }
     ],
     "throughput": 0.08928571428571429,
