@@ -51,3 +51,19 @@ def test_app_can_switch_algorithm_in_simulator(tmp_path: Path, monkeypatch) -> N
     assert len(at.exception) == 0
     assert any("Mô phỏng hoàn tất." in item.value for item in at.success)
     assert any("Round Robin" in caption.value for caption in at.caption)
+
+
+def test_app_comparison_tab_does_not_raise_duplicate_plotly_ids(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    monkeypatch.setenv("MLFQ_DATA_DIR", str(tmp_path / "data"))
+    monkeypatch.setenv("MLFQ_ANIMATION_DELAY", "0")
+
+    at = AppTest.from_file("app.py")
+    at.run()
+    at.button[2].click()
+    at.run()
+
+    assert len(at.exception) == 0
+    assert len(at.dataframe) >= 1

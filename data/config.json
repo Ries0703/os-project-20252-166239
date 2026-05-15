@@ -4,6 +4,6 @@
   "quantum_q1": 8,
   "quantum_q2": 10,
   "round_robin_quantum": 4,
-  "aging_boost_interval": 106,
-  "context_switch_time": 20
+  "aging_boost_interval": 27,
+  "context_switch_time": 4
 }
