@@ -9,6 +9,7 @@ Tài liệu này dành cho agent làm việc trong repo này. Mục tiêu là gi
 - Entry point chính thức của ứng dụng là `app.py`.
 - Package import chính thức là `mlfq_os_simulator`.
 - Script chạy app chính thức cho người dùng là `scripts/run-project.ps1`.
+- Script Docker chính thức cho người dùng là `scripts/build-docker-image.ps1` và `scripts/run-docker-image.ps1`.
 
 ## 2. Tooling bắt buộc
 
@@ -32,6 +33,8 @@ Tài liệu này dành cho agent làm việc trong repo này. Mục tiêu là gi
 - Không dùng `pip install` trực tiếp nếu việc đó có thể làm bằng `uv`
 - Không xóa hoặc phá flow `scripts/setup-python-tooling.ps1`
 - Không xóa hoặc phá flow `scripts/run-project.ps1`
+- Không xóa hoặc phá flow `scripts/build-docker-image.ps1`
+- Không xóa hoặc phá flow `scripts/run-docker-image.ps1`
 
 ## 4. Cách quản lý dependency
 
@@ -56,6 +59,13 @@ Khi cần xác nhận app có thể chạy theo đúng flow bàn giao:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\run-project.ps1 -SkipSync
+```
+
+Khi cần xác nhận đường Docker:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\build-docker-image.ps1
+powershell -ExecutionPolicy Bypass -File .\scripts\run-docker-image.ps1
 ```
 
 Khi cần xác nhận runtime deps:
@@ -86,6 +96,7 @@ uv run pytest tests -q
 - Nếu thêm file runtime trong `data/`, không commit file JSON sinh ra trong lúc chạy.
 - Dữ liệu demo nhanh trên UI là transient session data; repository chỉ quản lý config và history.
 - Nếu cần chạy integration test mà không muốn đụng vào `data/` mặc định, dùng biến môi trường `MLFQ_DATA_DIR`.
+- Nếu chỉnh Docker flow, phải giữ được khả năng mở app qua `http://localhost:<port>` từ host machine.
 
 ## 7. Ưu tiên khi làm việc
 

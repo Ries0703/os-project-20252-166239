@@ -53,6 +53,39 @@ $env:MLFQ_DATA_DIR = ".tmp-data"
 uv run streamlit run app.py
 ```
 
+## Docker
+
+### Build image
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\build-docker-image.ps1
+```
+
+Mặc định image tag là:
+
+```text
+mlfq-os-simulator:local
+```
+
+### Run container
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\run-docker-image.ps1
+```
+
+Script này sẽ:
+
+- kiểm tra image đã tồn tại
+- xóa container cũ cùng tên nếu có
+- chạy container detached
+- publish cổng container `8501` ra `localhost`
+
+### Run container với cổng hoặc thư mục data riêng
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\run-docker-image.ps1 -Port 8502 -HostDataDir ".docker-data"
+```
+
 ## Trạng thái hiện tại của repo
 
 - Đã có `pyproject.toml`
@@ -67,10 +100,14 @@ uv run streamlit run app.py
 
 - `scripts/setup-python-tooling.ps1`: script one-shot để dựng môi trường
 - `scripts/run-project.ps1`: script one-shot để chạy ứng dụng
+- `scripts/build-docker-image.ps1`: build Docker image
+- `scripts/run-docker-image.ps1`: chạy Docker container ra `localhost`
 - `pyproject.toml`: khai báo dependency của project
 - `uv.lock`: lockfile để mọi máy cài đúng cùng một bộ package
 - `.python-version`: pin Python `3.12`
 - `src/mlfq_os_simulator/`: package chính của ứng dụng
+- `Dockerfile`: image định nghĩa runtime container
+- `.dockerignore`: giới hạn context khi build image
 - `docs/master-plan.md`: bản kế hoạch ban đầu
 - `docs/superpowers/specs/2026-05-15-mlfq-os-simulator-final-spec.md`: spec cuối cùng cho implementation
 - `docs/superpowers/plans/2026-05-15-mlfq-os-simulator.md`: execution plan đã được siết chặt hơn
@@ -109,6 +146,13 @@ uv run pytest tests -q
 powershell -ExecutionPolicy Bypass -File .\scripts\run-project.ps1 -Port 8502 -DataDir ".tmp-data"
 ```
 
+### Build và run Docker nhanh
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\build-docker-image.ps1
+powershell -ExecutionPolicy Bypass -File .\scripts\run-docker-image.ps1
+```
+
 ### Chạy riêng unit test hoặc integration test
 
 ```powershell
@@ -128,6 +172,7 @@ uv run pytest tests/integration -q
 - Khi máy khác pull repo về, ưu tiên chạy script setup thay vì cài tay
 - Khi cần xác nhận behavior, ưu tiên chạy test suite thay vì bấm tay trên app
 - Dữ liệu demo nhanh cho UI là dữ liệu transient trong lớp UI/session, không đi qua repository
+- Đường local và đường Docker là hai flow độc lập; script local không phụ thuộc Docker
 
 ## Khi bàn giao cho máy khác
 
@@ -138,6 +183,13 @@ Checklist tối thiểu:
 3. xác nhận script báo `Setup complete`
 4. chạy `uv run pytest tests -q`
 5. chạy `.\scripts\run-project.ps1`
+
+Nếu bàn giao theo đường Docker:
+
+1. `git clone` repo
+2. chạy `.\scripts\build-docker-image.ps1`
+3. chạy `.\scripts\run-docker-image.ps1`
+4. mở `http://localhost:8501`
 
 ## Ghi chú
 
