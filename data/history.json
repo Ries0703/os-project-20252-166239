@@ -2179,5 +2179,171 @@
     "avg_turnaround": 35.4,
     "avg_waiting": 29.8,
     "avg_response": 13.2
+  },
+  {
+    "schema_version": 1,
+    "run_id": "72ffe3f258b44f6ba9ef89ae9cd8aff6",
+    "timestamp": "2026-05-15T08:22:22.235129Z",
+    "config_used": {
+      "schema_version": 1,
+      "quantum_q0": 4,
+      "quantum_q1": 8,
+      "quantum_q2": 10,
+      "aging_boost_interval": 106,
+      "context_switch_time": 4
+    },
+    "processes": [
+      {
+        "pid": "P1",
+        "arrival_time": 0,
+        "burst_time": 9,
+        "input_order": 0,
+        "remaining_time": 0,
+        "current_queue": 1,
+        "quantum_used": 5,
+        "start_time": 0,
+        "completion_time": 44
+      },
+      {
+        "pid": "P2",
+        "arrival_time": 1,
+        "burst_time": 4,
+        "input_order": 1,
+        "remaining_time": 0,
+        "current_queue": 0,
+        "quantum_used": 4,
+        "start_time": 8,
+        "completion_time": 12
+      },
+      {
+        "pid": "P3",
+        "arrival_time": 2,
+        "burst_time": 7,
+        "input_order": 2,
+        "remaining_time": 0,
+        "current_queue": 1,
+        "quantum_used": 3,
+        "start_time": 16,
+        "completion_time": 51
+      },
+      {
+        "pid": "P4",
+        "arrival_time": 4,
+        "burst_time": 3,
+        "input_order": 3,
+        "remaining_time": 0,
+        "current_queue": 0,
+        "quantum_used": 3,
+        "start_time": 24,
+        "completion_time": 27
+      },
+      {
+        "pid": "P5",
+        "arrival_time": 6,
+        "burst_time": 5,
+        "input_order": 4,
+        "remaining_time": 0,
+        "current_queue": 1,
+        "quantum_used": 1,
+        "start_time": 31,
+        "completion_time": 56
+      }
+    ],
+    "gantt_log": [
+      {
+        "Task": "P1",
+        "Start": 0,
+        "Finish": 4,
+        "Queue": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 4,
+        "Finish": 8,
+        "Queue": "N/A"
+      },
+      {
+        "Task": "P2",
+        "Start": 8,
+        "Finish": 12,
+        "Queue": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 12,
+        "Finish": 16,
+        "Queue": "N/A"
+      },
+      {
+        "Task": "P3",
+        "Start": 16,
+        "Finish": 20,
+        "Queue": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 20,
+        "Finish": 24,
+        "Queue": "N/A"
+      },
+      {
+        "Task": "P4",
+        "Start": 24,
+        "Finish": 27,
+        "Queue": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 27,
+        "Finish": 31,
+        "Queue": "N/A"
+      },
+      {
+        "Task": "P5",
+        "Start": 31,
+        "Finish": 35,
+        "Queue": "Q0"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 35,
+        "Finish": 39,
+        "Queue": "N/A"
+      },
+      {
+        "Task": "P1",
+        "Start": 39,
+        "Finish": 44,
+        "Queue": "Q1"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 44,
+        "Finish": 48,
+        "Queue": "N/A"
+      },
+      {
+        "Task": "P3",
+        "Start": 48,
+        "Finish": 51,
+        "Queue": "Q1"
+      },
+      {
+        "Task": "CS Overhead",
+        "Start": 51,
+        "Finish": 55,
+        "Queue": "N/A"
+      },
+      {
+        "Task": "P5",
+        "Start": 55,
+        "Finish": 56,
+        "Queue": "Q1"
+      }
+    ],
+    "throughput": 0.08928571428571429,
+    "avg_turnaround": 35.4,
+    "avg_waiting": 29.8,
+    "avg_response": 13.2
   }
 ]
