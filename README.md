@@ -227,7 +227,7 @@ Nếu bàn giao theo đường Docker:
 - Entry point chính thức của ứng dụng là `app.py`.
 - Package import chính thức là `mlfq_os_simulator`.
 - Thư mục `data/` được commit với baseline tối thiểu của app.
-- `history.json` nên được giữ ở trạng thái sạch trước khi commit nếu nó bị bẩn bởi runtime/test.
-- `data/config.json` và `data/history.json` là hai JSON contract chính của app.
+- `data/config.json` và `data/history.json` là runtime artifacts local, do app tự tạo lại nếu thiếu.
+- Không commit `data/config.json`, `data/history.json`, `*.lock`, hoặc `*.tmp` trong `data/`.
 - `Comparison` tab hiện so sánh `MLFQ`, `FCFS`, và `Round Robin`.
 - Nếu PowerShell hiện warning từ `PSReadLine`, có thể bỏ qua nếu script vẫn kết thúc thành công.

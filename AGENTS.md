@@ -115,7 +115,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\run-docker-image.ps1
 - Nếu cần thêm file bootstrap hoặc docs, giữ nội dung ngắn, thực dụng, và bám sát trạng thái thật của repo.
 - Nếu app chưa tồn tại đầy đủ, phải ghi rõ là “bootstrap xong nhưng app chưa hoàn chỉnh”.
 - Nếu sửa script setup, phải giữ tính idempotent: chạy lại nhiều lần vẫn an toàn.
-- Nếu thêm file runtime trong `data/`, không commit file JSON sinh ra trong lúc chạy.
+- Không commit runtime artifacts sinh ra trong lúc chạy như `data/config.json`, `data/history.json`, `data/*.lock`, `data/*.tmp`.
 - Dữ liệu demo nhanh trên UI là transient session data; repository chỉ quản lý config và history.
 - Nếu cần chạy integration test mà không muốn đụng vào `data/` mặc định, dùng biến môi trường `MLFQ_DATA_DIR`.
 - Nếu chỉnh Docker flow, phải giữ được khả năng mở app qua `http://localhost:<port>` từ host machine.
