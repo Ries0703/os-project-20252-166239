@@ -66,6 +66,25 @@ def test_history_is_pruned_to_twenty_entries(temp_data_dir: Path) -> None:
     assert runs[-1].run_id == "run-24"
 
 
+def test_get_all_runs_creates_empty_history_when_missing(temp_data_dir: Path) -> None:
+    repository = JsonRepository(temp_data_dir)
+
+    runs = repository.get_all_runs()
+
+    assert runs == []
+    assert repository.history_path.exists()
+
+
+def test_save_run_creates_history_file_and_directory_when_missing(temp_data_dir: Path) -> None:
+    missing_dir = temp_data_dir / "nested" / "runtime"
+    repository = JsonRepository(missing_dir)
+
+    repository.save_run(_build_run())
+
+    assert repository.history_path.exists()
+    assert missing_dir.exists()
+
+
 def test_corrupt_config_falls_back_to_default(temp_data_dir: Path) -> None:
     repository = JsonRepository(temp_data_dir)
     temp_data_dir.mkdir(parents=True, exist_ok=True)
@@ -104,3 +123,13 @@ def test_save_config_writes_json_document(temp_data_dir: Path) -> None:
 
     data = json.loads(repository.config_path.read_text(encoding="utf-8"))
     assert data["quantum_q0"] == 2
+
+
+def test_save_config_creates_directory_when_missing(temp_data_dir: Path) -> None:
+    missing_dir = temp_data_dir / "nested" / "config"
+    repository = JsonRepository(missing_dir)
+
+    repository.save_config(AppConfig())
+
+    assert repository.config_path.exists()
+    assert missing_dir.exists()

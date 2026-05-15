@@ -7,6 +7,8 @@ __pycache__/
 .coverage
 htmlcov/
 .streamlit/secrets.toml
+.idea/
 data/*.json
-!data/config.json
-!data/history.json
+data/*.lock
+data/*.tmp
+!data/.gitkeep

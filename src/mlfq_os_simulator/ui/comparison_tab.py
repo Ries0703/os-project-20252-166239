@@ -80,7 +80,11 @@ def render_comparison_report(report: ComparisonReport) -> None:
     for tab, result in zip(preview_tabs, report.results, strict=True):
         with tab:
             if result.gantt_entries:
-                st.plotly_chart(build_algorithm_gantt_figure(result.gantt_entries), width="stretch")
+                st.plotly_chart(
+                    build_algorithm_gantt_figure(result.gantt_entries),
+                    key=f"comparison_gantt_{report.workload_key}_{result.algorithm_key}",
+                    width="stretch",
+                )
             st.dataframe(
                 pd.DataFrame([item.model_dump(mode="json") for item in result.process_results]),
                 width="stretch",

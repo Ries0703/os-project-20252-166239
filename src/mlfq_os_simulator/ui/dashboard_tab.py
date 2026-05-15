@@ -20,7 +20,11 @@ def render_dashboard_tab(run: AlgorithmRunResult | None) -> None:
     metric_cols[3].metric("Throughput", f"{run.throughput:.4f}")
 
     if run.gantt_entries:
-        st.plotly_chart(build_algorithm_gantt_figure(run.gantt_entries), width="stretch")
+        st.plotly_chart(
+            build_algorithm_gantt_figure(run.gantt_entries),
+            key=f"dashboard_gantt_{run.run_id}_{run.algorithm_key}",
+            width="stretch",
+        )
 
     process_rows = [
         {
