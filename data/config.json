@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "quantum_q0": 4,
+  "quantum_q1": 8,
+  "quantum_q2": 10,
+  "aging_boost_interval": 106,
+  "context_switch_time": 4
+}

@@ -1,0 +1,35 @@
+[project]
+name = "mlfq-os-simulator"
+version = "0.1.0"
+description = "Production-grade MLFQ simulator built with Streamlit."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "filelock>=3.29.0",
+    "pandas>=3.0.3",
+    "plotly>=6.7.0",
+    "pydantic>=2.13.4",
+    "streamlit>=1.57.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.3",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.15.13",
+    "ty>=0.0.35",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.14,<0.12.0"]
+build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+"src/mlfq_os_simulator/ui/animation.py" = ["E501"]

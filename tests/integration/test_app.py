@@ -1,0 +1,36 @@
+from __future__ import annotations
+
+from pathlib import Path
+
+from streamlit.testing.v1 import AppTest
+
+
+def test_app_boots_and_shows_empty_dashboard_when_no_run(tmp_path: Path, monkeypatch) -> None:
+    monkeypatch.setenv("MLFQ_DATA_DIR", str(tmp_path / "data"))
+    monkeypatch.setenv("MLFQ_ANIMATION_DELAY", "0")
+
+    at = AppTest.from_file("app.py")
+    at.run()
+
+    assert len(at.title) == 1
+    assert at.title[0].value == "MLFQ OS Simulator"
+    assert any("Chưa có kết quả mô phỏng" in info.value for info in at.info)
+
+
+def test_app_run_button_executes_simulation_and_persists_history(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    monkeypatch.setenv("MLFQ_DATA_DIR", str(tmp_path / "data"))
+    monkeypatch.setenv("MLFQ_ANIMATION_DELAY", "0")
+
+    at = AppTest.from_file("app.py")
+    at.run()
+    at.button[1].click()
+    at.run()
+
+    assert len(at.exception) == 0
+    assert any("Mô phỏng hoàn tất." in item.value for item in at.success)
+    assert len(at.metric) == 4
+    assert len(at.dataframe) >= 2
+    assert (tmp_path / "data" / "history.json").exists()
