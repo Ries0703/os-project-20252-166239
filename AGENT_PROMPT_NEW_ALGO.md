@@ -1,8 +1,8 @@
-Bạn đang làm việc trong repo `D:\dev\school\os\os-project-20252-166239`.
+Bạn đang làm việc trong repo `os-project-20252-166239`.
 
 Mục tiêu: thêm 1 thuật toán scheduling mới theo kiến trúc zero-touch hiện tại, sao cho:
-- không sửa `D:\dev\school\os\os-project-20252-166239\app.py`
-- không sửa UI shell trong `D:\dev\school\os\os-project-20252-166239\src\mlfq_os_simulator\ui\`
+- không sửa `os-project-20252-166239\app.py`
+- không sửa UI shell trong `os-project-20252-166239\src\mlfq_os_simulator\ui\`
 - không đăng ký registry bằng tay
 - không sửa comparison flow bằng tay
 - thuật toán mới tự xuất hiện trong `Simulator`
@@ -11,32 +11,32 @@ Mục tiêu: thêm 1 thuật toán scheduling mới theo kiến trúc zero-touch
 Làm theo workflow này, không bỏ bước:
 
 1. Đọc source of truth
-- `D:\dev\school\os\os-project-20252-166239\docs\superpowers\2026-05-15-scheduling-platform-blueprint.md`
-- `D:\dev\school\os\os-project-20252-166239\docs\algorithm-extension-guide.md`
-- `D:\dev\school\os\os-project-20252-166239\AGENTS.md`
+- `os-project-20252-166239\docs\superpowers\2026-05-15-scheduling-platform-blueprint.md`
+- `os-project-20252-166239\docs\algorithm-extension-guide.md`
+- `os-project-20252-166239\AGENTS.md`
 
 2. Hiểu contract extension hiện tại
-- `D:\dev\school\os\os-project-20252-166239\src\mlfq_os_simulator\shared\contracts.py`
-- `D:\dev\school\os\os-project-20252-166239\src\mlfq_os_simulator\shared\results.py`
-- `D:\dev\school\os\os-project-20252-166239\src\mlfq_os_simulator\shared\config.py`
+- `os-project-20252-166239\src\mlfq_os_simulator\shared\contracts.py`
+- `os-project-20252-166239\src\mlfq_os_simulator\shared\results.py`
+- `os-project-20252-166239\src\mlfq_os_simulator\shared\config.py`
 
 3. Hiểu cơ chế auto-discovery và orchestration
-- `D:\dev\school\os\os-project-20252-166239\src\mlfq_os_simulator\application\strategy_loader.py`
-- `D:\dev\school\os\os-project-20252-166239\src\mlfq_os_simulator\application\registry.py`
-- `D:\dev\school\os\os-project-20252-166239\src\mlfq_os_simulator\application\services.py`
-- `D:\dev\school\os\os-project-20252-166239\src\mlfq_os_simulator\application\comparison_service.py`
+- `os-project-20252-166239\src\mlfq_os_simulator\application\strategy_loader.py`
+- `os-project-20252-166239\src\mlfq_os_simulator\application\registry.py`
+- `os-project-20252-166239\src\mlfq_os_simulator\application\services.py`
+- `os-project-20252-166239\src\mlfq_os_simulator\application\comparison_service.py`
 
 4. Xem reference implementations trước khi code
 - đơn giản:
-  - `D:\dev\school\os\os-project-20252-166239\src\mlfq_os_simulator\algorithms\fcfs\strategy.py`
-  - `D:\dev\school\os\os-project-20252-166239\src\mlfq_os_simulator\algorithms\round_robin\strategy.py`
+  - `os-project-20252-166239\src\mlfq_os_simulator\algorithms\fcfs\strategy.py`
+  - `os-project-20252-166239\src\mlfq_os_simulator\algorithms\round_robin\strategy.py`
 - phức tạp hơn:
-  - `D:\dev\school\os\os-project-20252-166239\src\mlfq_os_simulator\algorithms\mlfq\strategy.py`
-  - `D:\dev\school\os\os-project-20252-166239\src\mlfq_os_simulator\algorithms\mlfq\engine.py`
+  - `os-project-20252-166239\src\mlfq_os_simulator\algorithms\mlfq\strategy.py`
+  - `os-project-20252-166239\src\mlfq_os_simulator\algorithms\mlfq\engine.py`
 
 5. Tạo package mới
 - tạo thư mục:
-  - `D:\dev\school\os\os-project-20252-166239\src\mlfq_os_simulator\algorithms\<algorithm_key>\`
+  - `os-project-20252-166239\src\mlfq_os_simulator\algorithms\<algorithm_key>\`
 - tối thiểu có:
   - `__init__.py`
   - `strategy.py`
@@ -66,15 +66,15 @@ Trong `strategy.py`, implement đầy đủ:
   - `Ready`
   - `CPU`
   - `Completed`
-- không sửa `D:\dev\school\os\os-project-20252-166239\src\mlfq_os_simulator\ui\animation.py` chỉ để cứu thuật toán mới
+- không sửa `os-project-20252-166239\src\mlfq_os_simulator\ui\animation.py` chỉ để cứu thuật toán mới
 
 9. Export strategy để auto-discovery thấy được
 Trong `__init__.py`, phải export:
 - `STRATEGY = <YourStrategyClass>()`
 
 Reference:
-- `D:\dev\school\os\os-project-20252-166239\src\mlfq_os_simulator\algorithms\fcfs\__init__.py`
-- `D:\dev\school\os\os-project-20252-166239\src\mlfq_os_simulator\algorithms\round_robin\__init__.py`
+- `os-project-20252-166239\src\mlfq_os_simulator\algorithms\fcfs\__init__.py`
+- `os-project-20252-166239\src\mlfq_os_simulator\algorithms\round_robin\__init__.py`
 
 10. Comparison participation
 - nếu muốn thuật toán tự xuất hiện ở tab `Comparison`, đặt:
@@ -85,10 +85,10 @@ Reference:
 
 11. Viết test bắt buộc
 Đọc reference tests:
-- `D:\dev\school\os\os-project-20252-166239\tests\unit\test_comparison_schedulers.py`
-- `D:\dev\school\os\os-project-20252-166239\tests\unit\test_algorithm_registry.py`
-- `D:\dev\school\os\os-project-20252-166239\tests\unit\test_comparison_service.py`
-- `D:\dev\school\os\os-project-20252-166239\tests\integration\test_app.py`
+- `os-project-20252-166239\tests\unit\test_comparison_schedulers.py`
+- `os-project-20252-166239\tests\unit\test_algorithm_registry.py`
+- `os-project-20252-166239\tests\unit\test_comparison_service.py`
+- `os-project-20252-166239\tests\integration\test_app.py`
 
 Phải thêm ít nhất:
 - deterministic unit test cho thuật toán mới
