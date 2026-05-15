@@ -1,6 +1,6 @@
 # 🚀 Blueprint Thực Thi: MLFQ OS Simulator (Production-Grade)
 
-> Trạng thái hiện tại: tài liệu này là blueprint lịch sử để tham khảo. Nguồn sự thật kỹ thuật hiện tại là `docs/superpowers/specs/2026-05-15-mlfq-os-simulator-final-spec.md` và `docs/superpowers/plans/2026-05-15-mlfq-os-simulator.md`.
+> Trạng thái hiện tại: tài liệu này là blueprint lịch sử để tham khảo. Nguồn sự thật kỹ thuật hiện tại là `docs/superpowers/2026-05-15-scheduling-platform-blueprint.md`.
 
 Tài liệu này không còn là bản nháp (draft) ý tưởng. Đây là **Bản Đặc Tả Thực Thi (Execution Blueprint)**. Mọi lớp (class), kiểu dữ liệu (typing), logic rẽ nhánh, và thành phần giao diện (UI components) đều được định nghĩa chính xác ở mức mã nguồn. Developer có thể nhìn vào đây để gõ code line-by-line.
 

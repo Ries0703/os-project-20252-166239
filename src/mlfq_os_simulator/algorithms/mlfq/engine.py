@@ -2,13 +2,13 @@ from __future__ import annotations
 
 from collections import defaultdict, deque
 from datetime import UTC, datetime
+from statistics import mean
 from uuid import uuid4
 
-from .config import AppConfig
-from .metrics import calculate_run_metrics
-from .models import (
+from ...shared.config import AppConfig
+from ...shared.process import ProcessInput
+from .runtime_models import (
     GanttLogEntry,
-    ProcessInput,
     ProcessState,
     SimulationFrame,
     SimulationOutcome,
@@ -55,14 +55,11 @@ def _consume_context_switch_tick(
     return time_current + 1, remaining_ticks - 1
 
 
-class MLFQScheduler:
+class MLFQEngine:
     def __init__(self, config: AppConfig) -> None:
         self.config = config
 
-    def run(self, processes: list[ProcessInput]) -> SimulationRun:
-        return self.simulate(processes).run
-
-    def simulate(self, processes: list[ProcessInput]) -> SimulationOutcome:
+    def run(self, processes: list[ProcessInput]) -> SimulationOutcome:
         if not processes:
             raise ValueError("At least one process is required")
 
@@ -267,7 +264,12 @@ class MLFQScheduler:
 
         completed.sort(key=lambda process: process.input_order)
         self._validate_invariants(completed, gantt_log, processes)
-        metrics = calculate_run_metrics(completed)
+
+        makespan = max((process.completion_time or 0) for process in completed)
+        throughput = len(completed) / makespan if makespan > 0 else 0.0
+        avg_turnaround = float(mean(process.turnaround_time for process in completed))
+        avg_waiting = float(mean(process.waiting_time for process in completed))
+        avg_response = float(mean(process.response_time for process in completed))
 
         run = SimulationRun(
             run_id=uuid4().hex,
@@ -275,10 +277,10 @@ class MLFQScheduler:
             config_used=self.config,
             processes=completed,
             gantt_log=gantt_log,
-            throughput=metrics["throughput"],
-            avg_turnaround=metrics["avg_turnaround"],
-            avg_waiting=metrics["avg_waiting"],
-            avg_response=metrics["avg_response"],
+            throughput=throughput,
+            avg_turnaround=avg_turnaround,
+            avg_waiting=avg_waiting,
+            avg_response=avg_response,
         )
         return SimulationOutcome(run=run, frames=frames)
 

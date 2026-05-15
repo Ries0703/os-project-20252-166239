@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from mlfq_os_simulator.config import AppConfig
-from mlfq_os_simulator.models import ProcessInput
-from mlfq_os_simulator.scheduler import MLFQScheduler
+from mlfq_os_simulator.algorithms.mlfq.engine import MLFQEngine
+from mlfq_os_simulator.shared.config import AppConfig
+from mlfq_os_simulator.shared.process import ProcessInput
 from mlfq_os_simulator.ui.simulator_tab import build_demo_process_rows
 
 
@@ -18,7 +18,7 @@ def test_single_process_demotes_across_all_queues() -> None:
         aging_boost_interval=50,
         context_switch_time=0,
     )
-    run = MLFQScheduler(config).run([ProcessInput(pid="P1", arrival_time=0, burst_time=20)])
+    run = MLFQEngine(config).run([ProcessInput(pid="P1", arrival_time=0, burst_time=20)]).run
 
     assert _gantt_tuples(run) == [
         ("P1", 0, 4, "Q0"),
@@ -44,7 +44,7 @@ def test_preemption_by_new_q0_process() -> None:
         ProcessInput(pid="P2", arrival_time=3, burst_time=1),
     ]
 
-    run = MLFQScheduler(config).run(processes)
+    run = MLFQEngine(config).run(processes).run
 
     assert _gantt_tuples(run) == [
         ("P1", 0, 2, "Q0"),
@@ -68,7 +68,7 @@ def test_priority_boost_moves_waiting_processes_back_to_q0() -> None:
         ProcessInput(pid="P2", arrival_time=0, burst_time=5),
     ]
 
-    run = MLFQScheduler(config).run(processes)
+    run = MLFQEngine(config).run(processes).run
 
     assert _gantt_tuples(run) == [
         ("P1", 0, 1, "Q0"),
@@ -97,7 +97,7 @@ def test_context_switch_overhead_is_logged() -> None:
         ProcessInput(pid="P2", arrival_time=0, burst_time=1),
     ]
 
-    run = MLFQScheduler(config).run(processes)
+    run = MLFQEngine(config).run(processes).run
 
     assert _gantt_tuples(run) == [
         ("P1", 0, 1, "Q0"),
@@ -115,7 +115,7 @@ def test_idle_cpu_is_logged_before_first_arrival() -> None:
         context_switch_time=0,
     )
 
-    run = MLFQScheduler(config).run([ProcessInput(pid="P1", arrival_time=3, burst_time=2)])
+    run = MLFQEngine(config).run([ProcessInput(pid="P1", arrival_time=3, burst_time=2)]).run
 
     assert _gantt_tuples(run) == [
         ("Idle", 0, 3, "N/A"),
@@ -131,7 +131,7 @@ def test_duplicate_pid_is_rejected() -> None:
     ]
 
     try:
-        MLFQScheduler(config).run(processes)
+        MLFQEngine(config).run(processes)
     except ValueError as exc:
         assert "Duplicate pid" in str(exc)
     else:
@@ -140,7 +140,7 @@ def test_duplicate_pid_is_rejected() -> None:
 
 def test_sample_data_runs_to_completion() -> None:
     processes = [ProcessInput(**row) for row in build_demo_process_rows()]
-    run = MLFQScheduler(AppConfig()).run(processes)
+    run = MLFQEngine(AppConfig()).run(processes).run
 
     assert len(run.processes) == len(processes)
     assert all(process.remaining_time == 0 for process in run.processes)
@@ -148,7 +148,7 @@ def test_sample_data_runs_to_completion() -> None:
 
 def test_simulate_returns_trace_frames() -> None:
     processes = [ProcessInput(pid="P1", arrival_time=0, burst_time=3)]
-    outcome = MLFQScheduler(AppConfig(context_switch_time=0)).simulate(processes)
+    outcome = MLFQEngine(AppConfig(context_switch_time=0)).run(processes)
 
     assert outcome.frames
     assert outcome.frames[-1].completed_pids == ["P1"]

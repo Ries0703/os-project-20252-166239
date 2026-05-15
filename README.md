@@ -1,6 +1,8 @@
-# MLFQ OS Simulator
+# CPU Scheduling Simulator
 
-Repo này là nền tảng triển khai đồ án mô phỏng thuật toán điều phối CPU `Multi-Level Feedback Queue (MLFQ)` theo hướng chất lượng production. Ở trạng thái hiện tại, repo đã khóa xong môi trường Python, dependency contract, và bootstrap script để máy khác có thể `clone -> setup` một phát.
+Repo này là nền tảng triển khai đồ án mô phỏng điều phối CPU theo kiến trúc strategy-first. `MLFQ` là thuật toán chính, đồng thời repo có `FCFS` và `Round Robin` để chạy so sánh trên cùng workload.
+
+Nguyên tắc mở rộng hiện tại là **zero-touch algorithm extension**: thêm thuật toán mới phải chỉ cần thêm package mới trong `algorithms/` đúng contract, không sửa `app.py`, không sửa UI, không sửa registry thủ công.
 
 ## Clone -> Setup -> Run
 
@@ -94,7 +96,9 @@ powershell -ExecutionPolicy Bypass -File .\scripts\run-docker-image.ps1 -Port 85
 - Đã có script setup one-shot
 - Đã khóa global tooling và local dependency theo đúng contract
 - Đã có ứng dụng Streamlit chạy end-to-end cho mô phỏng MLFQ
-- Đã có unit test và integration test để kiểm tra scheduler, repository, helper UI, và flow app
+- Đã có strategy base cho `MLFQ`, `FCFS`, và `Round Robin`
+- Đã có tab `Comparison` để so sánh nhiều thuật toán trên cùng workload
+- Đã có unit test và integration test cho scheduler, registry, comparison service, helper UI, và flow app
 
 ## File quan trọng
 
@@ -106,11 +110,16 @@ powershell -ExecutionPolicy Bypass -File .\scripts\run-docker-image.ps1 -Port 85
 - `uv.lock`: lockfile để mọi máy cài đúng cùng một bộ package
 - `.python-version`: pin Python `3.12`
 - `src/mlfq_os_simulator/`: package chính của ứng dụng
+- `src/mlfq_os_simulator/shared/`: shared contracts, neutral result models, metric helpers
+- `src/mlfq_os_simulator/algorithms/`: concrete strategy implementations
+- `src/mlfq_os_simulator/algorithms/mlfq/`: MLFQ engine và runtime models riêng
+- `src/mlfq_os_simulator/application/`: app-level services và registry wiring
+- `src/mlfq_os_simulator/infrastructure/`: persistence adapters
 - `Dockerfile`: image định nghĩa runtime container
 - `.dockerignore`: giới hạn context khi build image
-- `docs/master-plan.md`: bản kế hoạch ban đầu
-- `docs/superpowers/specs/2026-05-15-mlfq-os-simulator-final-spec.md`: spec cuối cùng cho implementation
-- `docs/superpowers/plans/2026-05-15-mlfq-os-simulator.md`: execution plan đã được siết chặt hơn
+- `docs/superpowers/2026-05-15-scheduling-platform-blueprint.md`: blueprint nguồn sự thật duy nhất cho kiến trúc và triển khai
+- `docs/algorithm-extension-guide.md`: hướng dẫn dev khác thêm thuật toán
+- `docs/comparison-analysis.md`: phần thảo luận các yếu tố ảnh hưởng hiệu năng MLFQ
 
 ## Lệnh thường dùng
 
@@ -138,6 +147,26 @@ uv run --group dev --python 3.12 ty --version
 
 ```powershell
 uv run pytest tests -q
+```
+
+### Quy trình verify chuẩn
+
+Khi cần kiểm tra repo theo đúng flow kỹ thuật đầy đủ, chạy theo thứ tự này:
+
+```powershell
+uv sync --all-groups --frozen --python 3.12 --managed-python --link-mode copy
+uv run --python 3.12 python -c "import filelock, pandas, plotly, pydantic, streamlit; print('Project dependencies OK')"
+uv run ruff check .
+uv run ty check src
+uv run pytest tests -q
+uv run streamlit run app.py --server.headless true
+```
+
+Nếu cần verify Docker end-to-end:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\build-docker-image.ps1
+powershell -ExecutionPolicy Bypass -File .\scripts\run-docker-image.ps1
 ```
 
 ### Chạy app bằng script với thư mục dữ liệu/cổng riêng
@@ -173,6 +202,8 @@ uv run pytest tests/integration -q
 - Khi cần xác nhận behavior, ưu tiên chạy test suite thay vì bấm tay trên app
 - Dữ liệu demo nhanh cho UI là dữ liệu transient trong lớp UI/session, không đi qua repository
 - Đường local và đường Docker là hai flow độc lập; script local không phụ thuộc Docker
+- UI không gọi trực tiếp implementation của thuật toán; comparison và simulator đi qua application service/registry
+- Root modules kiểu `scheduler.py`, `models.py`, `repository.py`, `config.py`, `metrics.py` không còn là canonical entrypoint sau hard-cut refactor
 
 ## Khi bàn giao cho máy khác
 
@@ -198,4 +229,5 @@ Nếu bàn giao theo đường Docker:
 - Thư mục `data/` được commit với baseline tối thiểu của app.
 - `history.json` nên được giữ ở trạng thái sạch trước khi commit nếu nó bị bẩn bởi runtime/test.
 - `data/config.json` và `data/history.json` là hai JSON contract chính của app.
+- `Comparison` tab hiện so sánh `MLFQ`, `FCFS`, và `Round Robin`.
 - Nếu PowerShell hiện warning từ `PSReadLine`, có thể bỏ qua nếu script vẫn kết thúc thành công.

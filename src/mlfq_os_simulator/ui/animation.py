@@ -7,13 +7,25 @@ from typing import TypedDict
 import streamlit as st
 import streamlit.components.v1 as components
 
-from ..models import SimulationFrame
+from ..shared.results import AlgorithmTraceFrame
 
 DEFAULT_ANIMATION_DELAY_MS = int(float(os.getenv("MLFQ_ANIMATION_DELAY", "0.15")) * 1000)
-COLOR_MAP = {
+FALLBACK_COLORS = [
+    "#ef4444",
+    "#f59e0b",
+    "#22c55e",
+    "#3b82f6",
+    "#8b5cf6",
+    "#ec4899",
+    "#14b8a6",
+    "#64748b",
+]
+PRESET_COLORS = {
     "Q0": "#ef4444",
     "Q1": "#f59e0b",
     "Q2": "#22c55e",
+    "CPU": "#3b82f6",
+    "CS": "#8b5cf6",
     "N/A": "#6b7280",
 }
 
@@ -22,35 +34,33 @@ class GanttPayloadEntry(TypedDict):
     task: str
     start: int
     finish: int
-    queue: str
+    lane: str
 
 
 class FramePayload(TypedDict):
     time_current: int
     status: str
-    running_pid: str | None
-    running_queue: str
-    queue_snapshot: dict[str, list[str]]
-    completed_pids: list[str]
-    gantt_log: list[GanttPayloadEntry]
+    running_label: str | None
+    lanes_snapshot: dict[str, list[str]]
+    completed_labels: list[str]
+    gantt_entries: list[GanttPayloadEntry]
 
 
-def _frame_to_payload(frame: SimulationFrame) -> FramePayload:
+def _frame_to_payload(frame: AlgorithmTraceFrame) -> FramePayload:
     return {
         "time_current": frame.time_current,
         "status": frame.status,
-        "running_pid": frame.running_pid,
-        "running_queue": frame.running_queue,
-        "queue_snapshot": frame.queue_snapshot,
-        "completed_pids": frame.completed_pids,
-        "gantt_log": [
+        "running_label": frame.running_label,
+        "lanes_snapshot": frame.lanes_snapshot,
+        "completed_labels": frame.completed_labels,
+        "gantt_entries": [
             {
                 "task": entry.Task,
                 "start": entry.Start,
                 "finish": entry.Finish,
-                "queue": entry.Queue,
+                "lane": entry.Lane,
             }
-            for entry in frame.gantt_log
+            for entry in frame.gantt_entries
         ],
     }
 
@@ -58,47 +68,66 @@ def _frame_to_payload(frame: SimulationFrame) -> FramePayload:
 def _max_finish_from_payload(payload: list[FramePayload]) -> int:
     max_finish = 1
     for frame in payload:
-        for item in frame["gantt_log"]:
+        for item in frame["gantt_entries"]:
             max_finish = max(max_finish, item["finish"])
     return max_finish
 
 
+def _build_color_map(payload: list[FramePayload]) -> dict[str, str]:
+    lanes: list[str] = []
+    for frame in payload:
+        for item in frame["gantt_entries"]:
+            lane = item["lane"]
+            if lane not in lanes:
+                lanes.append(lane)
+
+    color_map: dict[str, str] = {}
+    fallback_index = 0
+    for lane in lanes:
+        if lane in PRESET_COLORS:
+            color_map[lane] = PRESET_COLORS[lane]
+            continue
+        color_map[lane] = FALLBACK_COLORS[fallback_index % len(FALLBACK_COLORS)]
+        fallback_index += 1
+    return color_map
+
+
 def _build_animation_document(
-    frames: list[SimulationFrame],
+    frames: list[AlgorithmTraceFrame],
     delay_ms: int,
 ) -> str:
     payload: list[FramePayload] = [_frame_to_payload(frame) for frame in frames]
     payload_json = json.dumps(payload, ensure_ascii=False)
-    color_map_json = json.dumps(COLOR_MAP)
+    color_map_json = json.dumps(_build_color_map(payload))
     max_finish = _max_finish_from_payload(payload)
     max_tick = max((frame["time_current"] for frame in payload), default=1)
 
     return f"""
-<div id="mlfq-animation-root">
+<div id="scheduler-animation-root">
   <style>
-    #mlfq-animation-root {{
+    #scheduler-animation-root {{
       font-family: system-ui, sans-serif;
       border: 1px solid #e5e7eb;
       border-radius: 16px;
       padding: 16px;
       background: #ffffff;
     }}
-    #mlfq-animation-root .controls {{
+    #scheduler-animation-root .controls {{
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
       align-items: center;
       margin-bottom: 16px;
     }}
-    #mlfq-animation-root button,
-    #mlfq-animation-root select {{
+    #scheduler-animation-root button,
+    #scheduler-animation-root select {{
       border: 1px solid #d1d5db;
       border-radius: 10px;
       padding: 8px 12px;
       background: #ffffff;
       font-size: 14px;
     }}
-    #mlfq-animation-root .status {{
+    #scheduler-animation-root .status {{
       margin-bottom: 12px;
       padding: 12px 14px;
       background: #eff6ff;
@@ -106,66 +135,66 @@ def _build_animation_document(
       border-radius: 12px;
       min-height: 20px;
     }}
-    #mlfq-animation-root .meta {{
+    #scheduler-animation-root .meta {{
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
       margin-bottom: 16px;
     }}
-    #mlfq-animation-root .meta-card {{
+    #scheduler-animation-root .meta-card {{
       border: 1px solid #e5e7eb;
       border-radius: 12px;
       padding: 12px;
       background: #f9fafb;
     }}
-    #mlfq-animation-root .label {{
+    #scheduler-animation-root .label {{
       font-size: 12px;
       color: #6b7280;
       margin-bottom: 6px;
       text-transform: uppercase;
       letter-spacing: 0.04em;
     }}
-    #mlfq-animation-root .value {{
+    #scheduler-animation-root .value {{
       font-size: 20px;
       font-weight: 700;
       color: #111827;
     }}
-    #mlfq-animation-root .queues {{
+    #scheduler-animation-root .lanes {{
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 12px;
       margin-bottom: 16px;
     }}
-    #mlfq-animation-root .queue-card {{
+    #scheduler-animation-root .lane-card {{
       border-radius: 14px;
       border: 1px solid #e5e7eb;
       padding: 12px;
       background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
       min-height: 92px;
     }}
-    #mlfq-animation-root .queue-title {{
+    #scheduler-animation-root .lane-title {{
       font-weight: 700;
       margin-bottom: 8px;
       color: #111827;
     }}
-    #mlfq-animation-root .queue-items {{
+    #scheduler-animation-root .lane-items {{
       font-size: 14px;
       color: #374151;
       line-height: 1.5;
       white-space: pre-wrap;
     }}
-    #mlfq-animation-root .chart-wrap {{
+    #scheduler-animation-root .chart-wrap {{
       border: 1px solid #e5e7eb;
       border-radius: 14px;
       padding: 12px;
       background: #ffffff;
     }}
-    #mlfq-animation-root svg {{
+    #scheduler-animation-root svg {{
       width: 100%;
       height: 320px;
       display: block;
     }}
-    #mlfq-animation-root .legend {{
+    #scheduler-animation-root .legend {{
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
@@ -173,18 +202,18 @@ def _build_animation_document(
       font-size: 13px;
       color: #374151;
     }}
-    #mlfq-animation-root .legend-item {{
+    #scheduler-animation-root .legend-item {{
       display: inline-flex;
       align-items: center;
       gap: 6px;
     }}
-    #mlfq-animation-root .legend-color {{
+    #scheduler-animation-root .legend-color {{
       width: 12px;
       height: 12px;
       border-radius: 3px;
       display: inline-block;
     }}
-    #mlfq-animation-root .hint {{
+    #scheduler-animation-root .hint {{
       margin-top: 12px;
       font-size: 13px;
       color: #6b7280;
@@ -212,17 +241,12 @@ def _build_animation_document(
     <div class="meta-card"><div class="label">Completed</div><div class="value" id="completedValue">0</div></div>
   </div>
 
-  <div class="queues">
-    <div class="queue-card"><div class="queue-title">Q0</div><div class="queue-items" id="queue-q0">—</div></div>
-    <div class="queue-card"><div class="queue-title">Q1</div><div class="queue-items" id="queue-q1">—</div></div>
-    <div class="queue-card"><div class="queue-title">Q2</div><div class="queue-items" id="queue-q2">—</div></div>
-    <div class="queue-card"><div class="queue-title">Completed</div><div class="queue-items" id="queue-completed">—</div></div>
-  </div>
+  <div class="lanes" id="lanesBox"></div>
 
   <div class="chart-wrap">
-    <svg id="ganttSvg" viewBox="0 0 1200 320" preserveAspectRatio="none" aria-label="MLFQ animation chart"></svg>
+    <svg id="ganttSvg" viewBox="0 0 1200 320" preserveAspectRatio="none" aria-label="Scheduler animation chart"></svg>
     <div class="legend" id="legendBox"></div>
-    <div class="hint">Renderer dùng numeric timeline. Không còn phụ thuộc vào Plotly time-axis nên animation không bị “nhảy về 1970”.</div>
+    <div class="hint">Animation renderer đọc trace trung tính từ strategy, không hard-code riêng cho MLFQ.</div>
   </div>
 
   <script>
@@ -239,16 +263,17 @@ def _build_animation_document(
     const tickValue = document.getElementById("tickValue");
     const runningValue = document.getElementById("runningValue");
     const completedValue = document.getElementById("completedValue");
-    const queueQ0 = document.getElementById("queue-q0");
-    const queueQ1 = document.getElementById("queue-q1");
-    const queueQ2 = document.getElementById("queue-q2");
-    const queueCompleted = document.getElementById("queue-completed");
+    const lanesBox = document.getElementById("lanesBox");
     const legendBox = document.getElementById("legendBox");
 
-    const lanes = [];
+    const chartRows = [];
+    const snapshotLaneNames = [];
     frames.forEach((frame) => {{
-      frame.gantt_log.forEach((entry) => {{
-        if (!lanes.includes(entry.task)) lanes.push(entry.task);
+      Object.keys(frame.lanes_snapshot).forEach((laneName) => {{
+        if (!snapshotLaneNames.includes(laneName)) snapshotLaneNames.push(laneName);
+      }});
+      frame.gantt_entries.forEach((entry) => {{
+        if (!chartRows.includes(entry.task)) chartRows.push(entry.task);
       }});
     }});
 
@@ -260,10 +285,10 @@ def _build_animation_document(
 
     function buildLegend() {{
       legendBox.innerHTML = "";
-      Object.entries(colorMap).forEach(([queue, color]) => {{
+      Object.entries(colorMap).forEach(([lane, color]) => {{
         const item = document.createElement("div");
         item.className = "legend-item";
-        item.innerHTML = `<span class="legend-color" style="background:${{color}}"></span><span>${{queue}}</span>`;
+        item.innerHTML = `<span class="legend-color" style="background:${{color}}"></span><span>${{lane}}</span>`;
         legendBox.appendChild(item);
       }});
     }}
@@ -274,18 +299,18 @@ def _build_animation_document(
 
     function drawChart(frame) {{
       svg.innerHTML = "";
-      const totalHeight = Math.max(280, lanes.length * laneHeight + 48);
+      const totalHeight = Math.max(280, chartRows.length * laneHeight + 48);
       svg.setAttribute("viewBox", `0 0 1200 ${{totalHeight}}`);
 
-      lanes.forEach((lane, index) => {{
+      chartRows.forEach((rowLabel, index) => {{
         const y = topPad + index * laneHeight;
-        const laneLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
-        laneLabel.setAttribute("x", "12");
-        laneLabel.setAttribute("y", String(y + 18));
-        laneLabel.setAttribute("fill", "#374151");
-        laneLabel.setAttribute("font-size", "13");
-        laneLabel.textContent = lane;
-        svg.appendChild(laneLabel);
+        const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        label.setAttribute("x", "12");
+        label.setAttribute("y", String(y + 18));
+        label.setAttribute("fill", "#374151");
+        label.setAttribute("font-size", "13");
+        label.textContent = rowLabel;
+        svg.appendChild(label);
 
         const guide = document.createElementNS("http://www.w3.org/2000/svg", "line");
         guide.setAttribute("x1", String(leftPad));
@@ -297,7 +322,7 @@ def _build_animation_document(
         svg.appendChild(guide);
       }});
 
-      const axisY = topPad + lanes.length * laneHeight + 16;
+      const axisY = topPad + chartRows.length * laneHeight + 16;
       const axis = document.createElementNS("http://www.w3.org/2000/svg", "line");
       axis.setAttribute("x1", String(leftPad));
       axis.setAttribute("x2", String(leftPad + chartWidth));
@@ -330,10 +355,10 @@ def _build_animation_document(
         svg.appendChild(tickLabel);
       }}
 
-      frame.gantt_log.forEach((entry) => {{
-        const laneIndex = lanes.indexOf(entry.task);
-        if (laneIndex === -1) return;
-        const y = topPad + laneIndex * laneHeight + 6;
+      frame.gantt_entries.forEach((entry) => {{
+        const rowIndex = chartRows.indexOf(entry.task);
+        if (rowIndex === -1) return;
+        const y = topPad + rowIndex * laneHeight + 6;
         const x = leftPad + entry.start * scale;
         const width = Math.max(4, (entry.finish - entry.start) * scale);
 
@@ -343,10 +368,31 @@ def _build_animation_document(
         rect.setAttribute("width", String(width));
         rect.setAttribute("height", "20");
         rect.setAttribute("rx", "6");
-        rect.setAttribute("fill", colorMap[entry.queue] || "#9ca3af");
+        rect.setAttribute("fill", colorMap[entry.lane] || "#9ca3af");
         rect.setAttribute("opacity", "0.92");
         svg.appendChild(rect);
       }});
+    }}
+
+    function renderLaneCards(frame) {{
+      lanesBox.innerHTML = "";
+      snapshotLaneNames.forEach((laneName) => {{
+        const card = document.createElement("div");
+        card.className = "lane-card";
+        const items = frame.lanes_snapshot[laneName] || [];
+        card.innerHTML = `
+          <div class="lane-title">${{laneName}}</div>
+          <div class="lane-items">${{items.length ? items.join("\\n") : "—"}}</div>
+        `;
+        lanesBox.appendChild(card);
+      }});
+      const completedCard = document.createElement("div");
+      completedCard.className = "lane-card";
+      completedCard.innerHTML = `
+        <div class="lane-title">Completed</div>
+        <div class="lane-items">${{frame.completed_labels.length ? frame.completed_labels.join("\\n") : "—"}}</div>
+      `;
+      lanesBox.appendChild(completedCard);
     }}
 
     function renderFrame(index) {{
@@ -355,12 +401,9 @@ def _build_animation_document(
       slider.value = index;
       statusBox.textContent = frame.status;
       tickValue.textContent = `${{frame.time_current}} / ${{maxTick}}`;
-      runningValue.textContent = frame.running_pid ? `${{frame.running_pid}} (${{frame.running_queue}})` : "—";
-      completedValue.textContent = String(frame.completed_pids.length);
-      queueQ0.textContent = frame.queue_snapshot.Q0.length ? frame.queue_snapshot.Q0.join("\\n") : "—";
-      queueQ1.textContent = frame.queue_snapshot.Q1.length ? frame.queue_snapshot.Q1.join("\\n") : "—";
-      queueQ2.textContent = frame.queue_snapshot.Q2.length ? frame.queue_snapshot.Q2.join("\\n") : "—";
-      queueCompleted.textContent = frame.completed_pids.length ? frame.completed_pids.join("\\n") : "—";
+      runningValue.textContent = frame.running_label ? frame.running_label : "—";
+      completedValue.textContent = String(frame.completed_labels.length);
+      renderLaneCards(frame);
       drawChart(frame);
     }}
 
@@ -376,7 +419,7 @@ def _build_animation_document(
         return;
       }}
       const speed = Number(speedSelect.value || "1");
-      const delay = Math.max(25, Math.round({DEFAULT_ANIMATION_DELAY_MS} / speed));
+      const delay = Math.max(25, Math.round({delay_ms} / speed));
       timerId = window.setTimeout(() => {{
         currentIndex += 1;
         renderFrame(currentIndex);
@@ -428,11 +471,12 @@ def _build_animation_document(
 """
 
 
-def render_simulation_animation(frames: list[SimulationFrame]) -> None:
+def render_simulation_animation(frames: list[AlgorithmTraceFrame]) -> None:
     if not frames:
         return
 
     st.subheader("Animation mô phỏng")
     html = _build_animation_document(frames, DEFAULT_ANIMATION_DELAY_MS)
-    height = max(760, 420 + len(frames[-1].queue_snapshot) * 24)
+    lane_count = len(frames[-1].lanes_snapshot) + 1
+    height = max(760, 420 + lane_count * 28)
     components.html(html, height=height, scrolling=False)

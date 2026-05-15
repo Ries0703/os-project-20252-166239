@@ -4,12 +4,15 @@ Tài liệu này dành cho agent làm việc trong repo này. Mục tiêu là gi
 
 ## 1. Mục tiêu repo
 
-- Repo này dùng để triển khai ứng dụng mô phỏng `MLFQ OS Simulator`.
+- Repo này dùng để triển khai `CPU Scheduling Simulator` theo kiến trúc strategy-first.
 - Ưu tiên hiện tại là bootstrap repo chặt chẽ, dependency reproducible, và local run ổn định.
 - Entry point chính thức của ứng dụng là `app.py`.
 - Package import chính thức là `mlfq_os_simulator`.
 - Script chạy app chính thức cho người dùng là `scripts/run-project.ps1`.
 - Script Docker chính thức cho người dùng là `scripts/build-docker-image.ps1` và `scripts/run-docker-image.ps1`.
+- Kiến trúc phase hiện tại là strategy-first: `MLFQ`, `FCFS`, `Round Robin` đều phải conform cùng scheduler contract.
+- Tab `Simulator` phải algo-agnostic: chọn thuật toán qua dropdown và resolve qua service/registry, không nối tắt vào UI.
+- Blueprint nguồn sự thật duy nhất là `docs/superpowers/2026-05-15-scheduling-platform-blueprint.md`.
 
 ## 2. Tooling bắt buộc
 
@@ -88,6 +91,25 @@ Khi cần xác nhận behavior của ứng dụng, ưu tiên:
 uv run pytest tests -q
 ```
 
+Khi cần xác nhận code quality đầy đủ trước khi kết thúc task, chạy theo thứ tự:
+
+```powershell
+uv sync --all-groups --frozen --python 3.12 --managed-python --link-mode copy
+uv run --python 3.12 python -c "import filelock, pandas, plotly, pydantic, streamlit; print('Project dependencies OK')"
+uv run ruff check .
+uv run ty check src
+uv run pytest tests -q
+uv run streamlit run app.py --server.headless true
+```
+
+Khi cần xác nhận cả đường local script và Docker script:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\run-project.ps1 -SkipSync
+powershell -ExecutionPolicy Bypass -File .\scripts\build-docker-image.ps1
+powershell -ExecutionPolicy Bypass -File .\scripts\run-docker-image.ps1
+```
+
 ## 6. Quy tắc chỉnh sửa repo
 
 - Nếu cần thêm file bootstrap hoặc docs, giữ nội dung ngắn, thực dụng, và bám sát trạng thái thật của repo.
@@ -97,6 +119,8 @@ uv run pytest tests -q
 - Dữ liệu demo nhanh trên UI là transient session data; repository chỉ quản lý config và history.
 - Nếu cần chạy integration test mà không muốn đụng vào `data/` mặc định, dùng biến môi trường `MLFQ_DATA_DIR`.
 - Nếu chỉnh Docker flow, phải giữ được khả năng mở app qua `http://localhost:<port>` từ host machine.
+- Nếu thêm thuật toán mới, phải thêm package mới dưới `algorithms/`, export `STRATEGY`, và để registry auto-discovery nạp vào; không được sửa registry/UI/comparison bằng tay.
+- Không được resurrect root-level legacy modules kiểu `scheduler.py`, `models.py`, `repository.py`, `metrics.py`, `config.py`.
 
 ## 7. Ưu tiên khi làm việc
 
